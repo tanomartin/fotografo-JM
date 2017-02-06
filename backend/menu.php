@@ -62,13 +62,13 @@ if ($_SESSION ['username'] == NULL)
             	</thead>
             	<tbody>
             		<?php
-            			$sqlAlbumes = "select * from albumes a, portadas p where a.id=p.id";
+            			$sqlAlbumes = "select * from albumes a, photos p where a.idPortada = p.id";
 						$resultado = $mysqli->query($sqlAlbumes);
             			while($fila = $resultado->fetch_assoc()) { ?>
 	                      <tr>
 	                          <td><?php echo $fila['id']?></td>
 	                          <td><?php echo $fila['nombre']?></td>
-	                          <td><img src="../<?php echo $fila['pathPhoto']?>" class="img-responsive" alt="Cinque Terre" style="width: 100px"/></td>
+	                          <td><img src="../<?php echo $fila['path']?>" class="img-responsive" alt="Cinque Terre" style="width: 100px"/></td>
 	                       	  <td><?php if ($fila['activo'] == 1) { ?>
 	                       	  				<span class="glyphicon glyphicon-ok" style="color: green; font-size: larger"></span>
 	                       	  	  <?php } else { ?>
