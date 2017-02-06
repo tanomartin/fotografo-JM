@@ -148,7 +148,7 @@ if ($_SESSION ['username'] == NULL)
 					var newpass = $('#newpass').val();
 					var repetnewpass = $('#repetnewpass').val();
 					if (newpass != repetnewpass) {
-						$('#change-error').html("No se ha podido acutalizar la información del perfil. Las contraseñas no coinciden.");
+						$('#change-error').html("No se ha podido cambiar la contraseña. Las contraseñas no coinciden.");
 						$('#change-error').show();
 					} else {
 						$("body").css("cursor", "progress");
@@ -160,10 +160,10 @@ if ($_SESSION ['username'] == NULL)
 						}, function(data) {
 							$("body").css("cursor", "default");
 							if (data == 1) {
-								$('#change-ok').html("Se ha actualizado la información del perfil correctamente,");
+								$('#change-ok').html("Se ha cambiado la contraseña correctamente.");
 								$('#change-ok').show();
 							} else {
-								$('#change-error').html("No se ha podido acutalizar la información del perfil. La contraseña no es correcta.");
+								$('#change-error').html("No se ha podido cambiar la contraseña. La contraseña no es correcta.");
 								$('#change-error').show();
 							}
 							$("#change-submit").prop('disabled', false);
