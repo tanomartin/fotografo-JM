@@ -7,7 +7,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Administrador - Fotografo JM</title>
+<title>Recuepero Contraseña - Fotografo JM</title>
 
 <!-- Bootstrap Core CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -43,7 +43,7 @@
 		<!-- Navigation -->
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Administrador - Fotografo JM</a>
+				<a class="navbar-brand" href="index.html">Administrador - Fotografo JM</a>
 			</div>
 		</nav>
 
@@ -53,34 +53,26 @@
 					<div class="panel panel-login">
 						<div class="panel-heading">
 							<div class="row">
-								<h3>Ingreso</h3>
+								<h3>Recupero Contraseña</h3>
 							</div>
 							<hr>
 						</div>
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-lg-12">
-									<form id="login-form" action="#" method="post" role="form" style="display: block;">
-										<div class="alert alert-danger" id="login-error" style="display: none"></div>
+									<form id="recover-form" action="#" method="post" role="form" style="display: block;">
+										<div class="alert alert-danger" id="recover-error" style="display: none"></div>
+										<div class="alert alert-success" id="recover-error" style="display: none"></div>
 										<div class="form-group">
 											<input type="text" name="username" id="username" tabindex="1" class="form-control" required="required" placeholder="Usuario" value="">
 										</div>
 										<div class="form-group">
-											<input type="password" name="password" id="password" required="required" tabindex="2" class="form-control" placeholder="Contraseña">
+											<input type="email" name="email" id="email" required="required" tabindex="2" class="form-control" placeholder="Email">
 										</div>
 										<div class="form-group">
 											<div class="row">
 												<div class="col-sm-6 col-sm-offset-3">
-													<input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Ingresar">
-												</div>
-											</div>
-										</div>
-										<div class="form-group">
-											<div class="row">
-												<div class="col-lg-12">
-													<div class="text-center">
-														<a href="recover.html" tabindex="5" class="forgot-password">¿Olvidó su contraseña?</a>
-													</div>
+													<input type="submit" name="recover-submit" id="recover-submit" tabindex="4" class="form-control btn btn-login" value="Recuperar">
 												</div>
 											</div>
 										</div>
@@ -108,25 +100,28 @@
 	<script src="js/startmin.js"></script>
 
 	<script type="text/javascript">
-		$("#login-form").submit(
+		$("#recover-form").submit(
 				function(event) {
 					$("body").css("cursor", "progress");
-					$("#login-submit").prop('disabled', true);
-					$('#login-error').hide();
+					$("#recover-submit").prop('disabled', true);
+					$('#recover-error').hide();
+					$('#recover-ok').hide();
 					var username = $('#username').val();
-					var password = $('#password').val();
-					$.post("include/verificaID.php", {
+					var email = $('#email').val();
+					$.post("include/verificaMail.php", {
 						username : username,
-						password : password
+						email : email
 					}, function(data) {
+						alert(data);
 						$("body").css("cursor", "default");
 						if (data == 1) {
-							window.location = "menu.php";
+							$('#recover-ok').html("Se ha recuperado la contraseña correctamente. Revise su correo electróncio");
+							$('#recover-ok').show();
 						} else {
-							$('#login-error').html("Error en usuario y/o contrase&ntilde;a");
-							$('#login-error').show();
-							$("#login-submit").prop('disabled', false);
+							$('#recover-error').html("Error en usuario y/o email. No se ha podido enviar la contraseña");
+							$('#recover-error').show();
 						}
+						$("#recover-submit").prop('disabled', false);
 					});
 					return false;
 				});
