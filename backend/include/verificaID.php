@@ -8,6 +8,7 @@ if ($cant > 0) {
 	$fila = $resultado->fetch_assoc();
 	$_SESSION['username'] = $_POST['username'];
 	$_SESSION['name'] = $fila['nombre'];
+	$_SESSION['id'] = $fila['id'];
 }
 echo $cant;
 ?>

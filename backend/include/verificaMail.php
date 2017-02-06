@@ -3,7 +3,6 @@ include ("conexion.php");
 $mail = $_POST ['email'];
 $username = $_POST ['username'];
 $sql = "select * from usuarios where username = '$username' and email = '$mail'";
-echo $sql;
 $resultado = $mysqli->query($sql);
 $cant =  $resultado->num_rows;
 if ($cant > 0) {

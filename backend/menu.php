@@ -1,8 +1,10 @@
 <?php 
+include ("include/conexion.php");
 session_save_path ("session");
 session_start ();
 if ($_SESSION ['username'] == NULL)
 	header ( "Location: index.html" );
+
 ?>
 
 <!DOCTYPE html>
@@ -21,15 +23,9 @@ if ($_SESSION ['username'] == NULL)
 
     <!-- MetisMenu CSS -->
     <link href="css/metisMenu.min.css" rel="stylesheet">
-
-    <!-- Timeline CSS -->
-    <link href="css/timeline.css" rel="stylesheet">
-
+    
     <!-- Custom CSS -->
     <link href="css/startmin.css" rel="stylesheet">
-
-    <!-- Morris Charts CSS -->
-    <link href="css/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -40,61 +36,54 @@ if ($_SESSION ['username'] == NULL)
 
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Administrador - Fotografo JM</a>
-        </div>
-
-        <!-- Top Navigation: Left Menu -->
-        <ul class="nav navbar-nav navbar-left navbar-top-links">
-            <li><a href="../index.html" target="_blank"><i class="fa fa-home fa-fw"></i> Website</a></li>
-        </ul>
-
-        <!-- Top Navigation: Right Menu -->
-        <ul class="nav navbar-right navbar-top-links">
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user fa-fw"></i><?php echo $_SESSION['name']?> <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu dropdown-user">
-                    <li><a href="#"><i class="fa fa-user fa-fw"></i> Perfil de Usuario</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Salir</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
+        <!-- Top Navigation -->
+        <?php include("include/navbar.php")?>
 
         <!-- Sidebar -->
-        <div class="navbar-default sidebar" role="navigation">
-            <div class="sidebar-nav navbar-collapse">
-
-                <ul class="nav" id="side-menu">    
-                    <li>
-                        <a href="#" class="active"><i class="fa fa-picture-o fa-fw"></i> Álbumes<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="#">Second Level Item</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-
-            </div>
-        </div>
+        <?php include("include/sidebar.php")?>
     </nav>
 
     <!-- Page Content -->
     <div id="page-wrapper">
         <div class="container-fluid">
-
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Álbumes</h1>
                 </div>
             </div>
-
-            <!-- ... Your content goes here ... -->
+	
+            <table class="table">
+            	<thead>
+            		<th>Id</th>
+            		<th>Nombre</th>
+            		<th>Portada</th>
+            		<th>Activo</th>
+            		<th>Acciones</th>
+            	</thead>
+            	<tbody>
+            		<?php
+            			$sqlAlbumes = "select * from albumes a, portadas p where a.id=p.id";
+						$resultado = $mysqli->query($sqlAlbumes);
+            			while($fila = $resultado->fetch_assoc()) { ?>
+	                      <tr>
+	                          <td><?php echo $fila['id']?></td>
+	                          <td><?php echo $fila['nombre']?></td>
+	                          <td><img src="../<?php echo $fila['pathPhoto']?>" class="img-responsive" alt="Cinque Terre" style="width: 100px"/></td>
+	                       	  <td><?php if ($fila['activo'] == 1) { ?>
+	                       	  				<span class="glyphicon glyphicon-ok" style="color: green; font-size: larger"></span>
+	                       	  	  <?php } else { ?>
+	                       	  	  			<span class="glyphicon glyphicon-remove" style="color: red; font-size: larger"></span>
+	                       	  	  <?php } ?>
+	                       	  </td>	
+	                       	  <td>
+	                       	  	<a href="#" title="Editar"><span class="glyphicon glyphicon-pencil" style="font-size: larger"></span></a>
+	                       	  	<a href="#" title="Eliminar"><span class="glyphicon glyphicon-trash" style="font-size: larger"></span></a>
+	                       	  	<a href="#" title="Editar Fotos"><span class="glyphicon glyphicon-picture" style="font-size: larger"></span></a>
+	                       	  </td>
+	                       </tr>
+                  <?php } ?>
+            	</tbody>
+            </table>
 
         </div>
     </div>
