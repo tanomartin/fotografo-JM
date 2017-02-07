@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-02-2017 a las 20:44:43
+-- Tiempo de generación: 07-02-2017 a las 20:08:06
 -- Versión del servidor: 5.6.15-log
 -- Versión de PHP: 5.4.24
 
@@ -31,22 +31,44 @@ CREATE TABLE IF NOT EXISTS `albumes` (
   `nombre` varchar(15) NOT NULL,
   `activo` int(1) NOT NULL,
   `idPortada` int(5) NOT NULL,
+  `tipo` int(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `photos`
+-- Estructura de tabla para la tabla `fotos`
 --
 
-CREATE TABLE IF NOT EXISTS `photos` (
+CREATE TABLE IF NOT EXISTS `fotos` (
   `id` int(5) NOT NULL AUTO_INCREMENT,
   `idAlbum` int(4) NOT NULL,
   `bajada` text NOT NULL,
   `path` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tipos`
+--
+
+CREATE TABLE IF NOT EXISTS `tipos` (
+  `id` int(1) NOT NULL,
+  `descripcion` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tipos`
+--
+
+INSERT INTO `tipos` (`id`, `descripcion`) VALUES
+(1, 'Tipo Pinterest'),
+(2, 'Tipo Mosaico'),
+(3, 'Imagenes al 100% continuas');
 
 -- --------------------------------------------------------
 
@@ -62,6 +84,13 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `email` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `username`, `password`, `nombre`, `email`) VALUES
+(1, 'admin', '123456', 'Administrador', 'tanomartin05@hotmail.com');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
