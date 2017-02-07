@@ -50,9 +50,20 @@ if ($_SESSION ['username'] == NULL)
                     <h1 class="page-header">Nuevo Album</h1>
                 </div>
             </div>
-            <form id="album-form" action="albumNuevoGuardar.php" method="post" role="form" enctype="multipart/form-data">
+            <form id="album-form" action="album.nuevo.guardar.php" method="post" role="form" enctype="multipart/form-data">
             	<div class="form-group">
 					<label>Titulo</label><input type="text" name="titulo" id="titulo" tabindex="1" class="form-control input-lg" required="required"  maxlength="15" placeholder="Titulo">
+				</div>
+				
+				<div class="form-group">
+					<label>Tipo</label>
+					<select class="form-control" id="tipo" name="tipo">
+					<?php $sqltipos = "select * from tipos";
+						  $resultado = $mysqli->query($sqltipos);
+            			  while($fila = $resultado->fetch_assoc()) { ?>
+							 <option value='<?php echo $fila['id'] ?>' selected="selected"><?php echo $fila['descripcion']?></option>
+					<?php } ?>
+					</select>
 				</div>
 	            
                 <h1 class="page-header">Fotografias</h1>

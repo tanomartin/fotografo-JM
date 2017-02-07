@@ -2,13 +2,13 @@
 include ("include/conexion.php");
 session_save_path ("session");
 session_start ();
-var_dump($_POST);echo "<br>";
+
 if ($_SESSION ['username'] == NULL)
 	header ( "Location: index.html" );
 
 try {
 	mysqli_autocommit($mysqli, FALSE);
-	$sqlInsertAlbum = "INSERT INTO albumes VALUES(DEFAULT, '".$_POST['titulo']."',0,0)";
+	$sqlInsertAlbum = "INSERT INTO albumes VALUES(DEFAULT, '".$_POST['titulo']."',0,0,".$_POST['tipo'].")";
 	mysqli_query($mysqli, $sqlInsertAlbum);
 	$idAlbum = $mysqli->insert_id;
 	
@@ -41,7 +41,7 @@ try {
 		mysqli_commit($mysqli);
 		mysqli_close($mysqli);
 	}
-	header('Location: menu.php');
+	header('Location: album.php');
 } catch (Exception $e) { 
 	$mysqli->rollback();
 }

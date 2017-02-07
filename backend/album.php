@@ -58,11 +58,12 @@ if ($_SESSION ['username'] == NULL)
             		<th>Nombre</th>
             		<th>Portada</th>
             		<th>Activo</th>
+            		<th>Tipo</th>
             		<th>Acciones</th>
             	</thead>
             	<tbody>
             		<?php
-            			$sqlAlbumes = "select a.*, p.path from albumes a, fotos p where a.idPortada = p.id";
+            			$sqlAlbumes = "select a.*, p.path, t.descripcion as tipo from albumes a, fotos p, tipos t where a.idPortada = p.id and a.tipo = t.id";
 						$resultado = $mysqli->query($sqlAlbumes);
             			while($fila = $resultado->fetch_assoc()) { ?>
 	                      <tr>
@@ -74,17 +75,39 @@ if ($_SESSION ['username'] == NULL)
 	                       	  	  <?php } else { ?>
 	                       	  	  			<span class="glyphicon glyphicon-remove" style="color: red; font-size: larger"></span>
 	                       	  	  <?php } ?>
-	                       	  </td>	
+	                       	  </td>
+	                       	   <td><?php echo $fila['tipo']?></td>	
 	                       	  <td>
 	                       	  	<a href="#" title="Editar"><span class="glyphicon glyphicon-pencil" style="font-size: larger"></span></a>
-	                       	  	<a href="#" title="Eliminar"><span class="glyphicon glyphicon-trash" style="font-size: larger"></span></a>
+	                       	  	<a href="#" data-toggle="modal" data-href="album.delete.php?id=<?php echo $fila['id']?>" data-target="#confirm-delete" title="Eliminar"><span class="glyphicon glyphicon-trash" style="font-size: larger"></span></a>
 	                       	  	<a href="#" title="Editar Fotos"><span class="glyphicon glyphicon-picture" style="font-size: larger"></span></a>
 	                       	  </td>
 	                       </tr>
                   <?php } ?>
             	</tbody>
             </table>
-
+			
+			<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		        <div class="modal-dialog">
+		            <div class="modal-content">
+		            
+		                <div class="modal-header">
+		                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                    <h4 class="modal-title" id="myModalLabel">Confirmación de Eliminación</h4>
+		                </div>
+		            
+		                <div class="modal-body">
+		                    <p>Esta seguro que desea eliminar el Album</p>
+		                    <p>Para continuar presione el boton Elminar, si desea cancelar lo puede hacer presionando Cancelar</p>
+		                </div>
+		                
+		                <div class="modal-footer">
+		                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+		                    <a class="btn btn-danger btn-ok">Eliminar</a>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
         </div>
     </div>
 
@@ -101,6 +124,15 @@ if ($_SESSION ['username'] == NULL)
 
 <!-- Custom Theme JavaScript -->
 <script src="js/startmin.js"></script>
+
+<script type="text/javascript">
+
+$('#confirm-delete').on('show.bs.modal', function(e) {
+    $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+    $('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
+});
+
+</script>
 
 </body>
 </html>
