@@ -62,7 +62,7 @@ if ($_SESSION ['username'] == NULL)
             	</thead>
             	<tbody>
             		<?php
-            			$sqlAlbumes = "select * from albumes a, photos p where a.idPortada = p.id";
+            			$sqlAlbumes = "select a.*, p.path from albumes a, fotos p where a.idPortada = p.id";
 						$resultado = $mysqli->query($sqlAlbumes);
             			while($fila = $resultado->fetch_assoc()) { ?>
 	                      <tr>

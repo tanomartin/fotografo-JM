@@ -122,7 +122,7 @@ if ($_SESSION ['username'] == NULL)
 					var username = $('#username').val();
 					var nombre = $('#nombre').val();
 					var email = $('#email').val();
-					$.post("perfilGuardar.php", {
+					$.post("perfil.guardar.php", {
 						username : username,
 						nombre : nombre,
 						email : email
@@ -153,7 +153,7 @@ if ($_SESSION ['username'] == NULL)
 					} else {
 						$("body").css("cursor", "progress");
 						$("#change-submit").prop('disabled', true);
-						$.post("perfilChange.php", {
+						$.post("perfil.cambio.php", {
 							passold : passold,
 							newpass : newpass,
 							repetnewpass : repetnewpass
