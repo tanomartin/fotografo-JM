@@ -11,11 +11,11 @@ $resultado = $mysqli->query($sqlAlbumes);
             <li>
                 <a href="#" class="active"><i class="fa fa-picture-o fa-fw"></i> Albumes<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                	<?php while($fila = $resultado->fetch_assoc()) { ?>
-                    		<li>
-                                <a href="#"><?php echo $fila['nombre']?></a>
-                            </li>
-                     <?php } ?>
+                <?php while($fila = $resultado->fetch_assoc()) { ?>
+                    	<li>
+                            <a href="#" title="Vista Previa"> <?php echo $fila['titulo']?></a>
+                        </li>
+                <?php } ?>
                 </ul>
              </li>
          </ul>

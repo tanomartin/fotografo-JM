@@ -8,5 +8,5 @@ if ($mysqli->query($sqlUpdate) === TRUE) {
 } else {
 	echo 0;
 }
-
+mysqli_close($mysqli);
 ?>

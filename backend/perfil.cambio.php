@@ -14,7 +14,6 @@ if ($cant > 0) {
 } else {
 	echo 0;
 }
-
-
+mysqli_close($mysqli);
 
 ?>

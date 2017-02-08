@@ -48,69 +48,119 @@ if ($_SESSION ['username'] == NULL)
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Álbumes</h1>
+                    <h1 class="page-header">
+                    	Álbumes
+                    	<button onclick="location.href = 'album.nuevo.php'" type="button" class="btn btn-primary pull-right"><i class="fa fa-plus-circle"></i> Nuevo Album</button>
+                    </h1>
                 </div>
             </div>
-	
-            <table class="table">
-            	<thead>
-            		<th>Id</th>
-            		<th>Nombre</th>
-            		<th>Portada</th>
-            		<th>Activo</th>
-            		<th>Tipo</th>
-            		<th>Acciones</th>
-            	</thead>
-            	<tbody>
-            		<?php
-            			$sqlAlbumes = "select a.*, p.path, t.descripcion as tipo from albumes a, fotos p, tipos t where a.idPortada = p.id and a.tipo = t.id";
-						$resultado = $mysqli->query($sqlAlbumes);
-            			while($fila = $resultado->fetch_assoc()) { ?>
+			<?php
+            	$sqlAlbumes = "select a.*, p.path, t.descripcion as tipo from albumes a, fotos p, tipos t where a.idPortada = p.id and a.tipo = t.id";
+				$resultado = $mysqli->query($sqlAlbumes);
+				$rows = $resultado->num_rows;
+				if ($rows > 0) { ?>
+		            <table class="table">
+		            	<thead>
+		            		<th>Id</th>
+		            		<th>Titulo</th>
+		            		<th>Portada</th>
+		            		<th>Estado</th>
+		            		<th>Tipo</th>
+		            		<th>Acciones</th>
+		            	</thead>
+		            	<tbody>
+	             <?php while($fila = $resultado->fetch_assoc()) { ?>
 	                      <tr>
 	                          <td><?php echo $fila['id']?></td>
-	                          <td><?php echo $fila['nombre']?></td>
+	                          <td><?php echo $fila['titulo']?></td>
 	                          <td><img src="../<?php echo $fila['path']?>" class="img-responsive" alt="Cinque Terre" style="width: 100px"/></td>
 	                       	  <td><?php if ($fila['activo'] == 1) { ?>
-	                       	  				<span class="glyphicon glyphicon-ok" style="color: green; font-size: larger"></span>
+	                       	  				<span class="glyphicon glyphicon-ok" title="Activo" style="color: green; font-size: larger"></span>
 	                       	  	  <?php } else { ?>
-	                       	  	  			<span class="glyphicon glyphicon-remove" style="color: red; font-size: larger"></span>
+	                       	  	  			<span class="glyphicon glyphicon-remove" title="Inactivo" style="color: red; font-size: larger"></span>
 	                       	  	  <?php } ?>
 	                       	  </td>
 	                       	   <td><?php echo $fila['tipo']?></td>	
 	                       	  <td>
-	                       	  	<a href="#" title="Editar"><span class="glyphicon glyphicon-pencil" style="font-size: larger"></span></a>
+	                       	  	<a href="album.editar.php?id=<?php echo $fila['id']?>" title="Editar"><span class="glyphicon glyphicon-pencil" style="font-size: larger"></span></a>
 	                       	  	<a href="#" data-toggle="modal" data-href="album.delete.php?id=<?php echo $fila['id']?>" data-target="#confirm-delete" title="Eliminar"><span class="glyphicon glyphicon-trash" style="font-size: larger"></span></a>
-	                       	  	<a href="#" title="Editar Fotos"><span class="glyphicon glyphicon-picture" style="font-size: larger"></span></a>
+	                       	  	<a href="#" title="Vista Previa"><span class="glyphicon glyphicon-eye-open" style="font-size: larger"></span></a>
+	                       	  	<?php if ($fila['activo'] == 1) { ?>
+	                       	  				<a href="#" data-toggle="modal" data-href="album.cambioestado.php?id=<?php echo $fila['id']?>&estado=0" data-target="#confirm-desactivar" title="desactivar"><span class="glyphicon glyphicon-arrow-down" title="Desactivar" style="color: red; font-size: larger"></span></a>
+	                       	  	<?php } else { ?>
+	                       	  		 		<a href="#" data-toggle="modal" data-href="album.cambioestado.php?id=<?php echo $fila['id']?>&estado=1" data-target="#confirm-activar" title="Activar"><span class="glyphicon glyphicon-arrow-up" style="color: green; font-size: larger"></span></a>
+	                       	  	   <?php } ?>
 	                       	  </td>
 	                       </tr>
                   <?php } ?>
             	</tbody>
             </table>
+            <?php } else { ?>
+          		<div class="alert alert-info">No hay albumes cargados hasta el momento</div>
+            <?php } ?>
 			
-			<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		        <div class="modal-dialog">
-		            <div class="modal-content">
-		            
-		                <div class="modal-header">
-		                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		                    <h4 class="modal-title" id="myModalLabel">Confirmación de Eliminación</h4>
-		                </div>
-		            
-		                <div class="modal-body">
-		                    <p>Esta seguro que desea eliminar el Album</p>
-		                    <p>Para continuar presione el boton Elminar, si desea cancelar lo puede hacer presionando Cancelar</p>
-		                </div>
-		                
-		                <div class="modal-footer">
-		                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-		                    <a class="btn btn-danger btn-ok">Eliminar</a>
-		                </div>
-		            </div>
-		        </div>
-		    </div>
+			<!-- MODALS -->
+			
+				<div class="modal fade" id="confirm-activar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			        <div class="modal-dialog">
+			            <div class="modal-content">
+			                <div class="modal-header">
+			                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			                    <h4 class="modal-title" id="myModalLabel">Confirmación de Activación de Album</h4>
+			                </div>
+			                <div class="modal-body">
+			                    <p>Esta seguro que desea activar el Album</p>
+			                    <p>Para continuar presione el boton Activar, si desea cancelar lo puede hacer presionando Cancelar</p>
+			                </div>
+			                <div class="modal-footer">
+			                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+			                    <a class="btn btn-success btn-ok">Activar</a>
+			                </div>
+			            </div>
+			        </div>
+			    </div>
+			    
+			    <div class="modal fade" id="confirm-desactivar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			        <div class="modal-dialog">
+			            <div class="modal-content">
+			                <div class="modal-header">
+			                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			                    <h4 class="modal-title" id="myModalLabel">Confirmación la Desactivación de Album</h4>
+			                </div>
+			                <div class="modal-body">
+			                    <p>Esta seguro que desea desactivar el Album</p>
+			                    <p>Para continuar presione el boton Desactivar, si desea cancelar lo puede hacer presionando Cancelar</p>
+			                </div>
+			                <div class="modal-footer">
+			                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+			                    <a class="btn btn-warning btn-ok">Desactivar</a>
+			                </div>
+			            </div>
+			        </div>
+			    </div>
+			    
+			    <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			        <div class="modal-dialog">
+			            <div class="modal-content">
+			                <div class="modal-header">
+			                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			                    <h4 class="modal-title" id="myModalLabel">Confirmación de Eliminación</h4>
+			                </div>
+			                <div class="modal-body">
+			                    <p>Esta seguro que desea eliminar el Album</p>
+			                    <p>Para continuar presione el boton Elminar, si desea cancelar lo puede hacer presionando Cancelar</p>
+			                </div>
+			                <div class="modal-footer">
+			                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+			                    <a class="btn btn-danger btn-ok">Eliminar</a>
+			                </div>
+			            </div>
+			        </div>
+			    </div>		    
+		    
+		    <!-- FIN MODALS -->
         </div>
     </div>
-
 </div>
 
 <!-- jQuery -->
@@ -129,7 +179,14 @@ if ($_SESSION ['username'] == NULL)
 
 $('#confirm-delete').on('show.bs.modal', function(e) {
     $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
-    $('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
+});
+
+$('#confirm-activar').on('show.bs.modal', function(e) {
+    $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+});
+
+$('#confirm-desactivar').on('show.bs.modal', function(e) {
+    $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
 });
 
 </script>
