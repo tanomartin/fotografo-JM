@@ -13,7 +13,7 @@ $resultado = $mysqli->query($sqlAlbumes);
                 <ul class="nav nav-second-level">
                 <?php while($fila = $resultado->fetch_assoc()) { ?>
                     	<li>
-                            <a href="#" title="Vista Previa"> <?php echo $fila['titulo']?></a>
+                            <a href="album.editar.php?id=<?php echo $fila['id']?>" title="Vista Previa"> <?php echo $fila['titulo']?></a>
                         </li>
                 <?php } ?>
                 </ul>
