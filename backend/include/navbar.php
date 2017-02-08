@@ -15,6 +15,8 @@
                 <ul class="dropdown-menu dropdown-user">
                     <li><a href="perfil.php"><i class="fa fa-user fa-fw"></i> Perfil de Usuario</a></li>
                     <li class="divider"></li>
+                    <li><a href="clave.php"><i class="fa fa-key fa-fw"></i> Cambio de Contrasena</a></li>
+                    <li class="divider"></li>
                     <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Salir</a>
                     </li>
                 </ul>

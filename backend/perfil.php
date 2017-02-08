@@ -72,29 +72,6 @@ if ($_SESSION ['username'] == NULL)
 					<input type="submit" name="perfil-submit" id="perfil-submit" tabindex="4" class="btn btn-primary" value="Guardar">
 				</div>
             </form>
-			
-			<div class="row">
-				<div class="col-lg-12">
-                    <h1 class="page-header">Cambio de Contraseña</h1>
-                </div>
-            </div>
-			<div class="alert alert-danger" id="change-error" style="display: none"></div>
-			<div class="alert alert-success" id="change-ok" style="display: none"></div>
-			<form id="change-form" method="post" role="form" style="display: block;">
-            	<div class="form-group">
-					<label>Contraseña Actual</label><input type="password" name="passold" id="passold" tabindex="1" class="form-control" required="required" placeholder="Contraseña Actual">
-				</div>
-				<div class="form-group">
-					<label>Nueva Contraseña</label><input type="password" name="newpass" id="newpass" tabindex="1" class="form-control" required="required" placeholder="Nueva Contraseña">
-				</div>
-            	<div class="form-group">
-					<label>Repita Nueva Contraseña</label><input type="password" name="repetnewpass" id="repetnewpass" tabindex="1" class="form-control" required="required" placeholder="Repita Nueva Contraseña">
-				</div>
-				<div class="form-group">
-					<input type="submit" name="change-submit" id="change-submit" tabindex="4" class="btn btn-primary" value="Cambiar Contraseña">
-				</div>
-            </form>
-
         </div>
     </div>
 
@@ -137,41 +114,6 @@ if ($_SESSION ['username'] == NULL)
 						}
 						$("#perfil-submit").prop('disabled', false);
 					});
-					return false;
-				});
-
-		$("#change-form").submit(
-				function(event) {
-					$('#change-error').hide();
-					$('#change-ok').hide();
-					var passold = $('#passold').val();
-					var newpass = $('#newpass').val();
-					var repetnewpass = $('#repetnewpass').val();
-					if (newpass != repetnewpass) {
-						$('#change-error').html("No se ha podido cambiar la contraseña. Las contraseñas no coinciden.");
-						$('#change-error').show();
-					} else {
-						$("body").css("cursor", "progress");
-						$("#change-submit").prop('disabled', true);
-						$.post("perfil.cambio.php", {
-							passold : passold,
-							newpass : newpass,
-							repetnewpass : repetnewpass
-						}, function(data) {
-							$("body").css("cursor", "default");
-							if (data == 1) {
-								$('#change-ok').html("Se ha cambiado la contraseña correctamente.");
-								$('#change-ok').show();
-							} else {
-								$('#change-error').html("No se ha podido cambiar la contraseña. La contraseña no es correcta.");
-								$('#change-error').show();
-							}
-							$("#change-submit").prop('disabled', false);
-						});
-					}
-					$('#passold').val("");
-					$('#newpass').val("");
-					$('#repetnewpass').val("");
 					return false;
 				});
 </script>
