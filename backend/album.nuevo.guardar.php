@@ -22,21 +22,30 @@ try {
 		
 		for($x=0; $x<count($_FILES["file"]["name"]); $x++) {
 			$file = $_FILES["file"];
+			
 			$nombre = $file["name"][$x];
-			$ruta_provisional = $file["tmp_name"][$x];
-			$src = $carpeta.$nombre;
-			move_uploaded_file($ruta_provisional, $src);
 			$nombreDes = "descrip".$x;
 			$descrip = $_POST[$nombreDes];
-			$destino = "fotos/".$idAlbum."/".$nombre;
-			$sqlInsertFoto = "INSERT INTO fotos VALUES(DEFAULT, $idAlbum, '$descrip','$destino')";
+			
+			$sqlInsertFoto = "INSERT INTO fotos VALUES(DEFAULT, $idAlbum, '$descrip','')";
 			mysqli_query($mysqli,$sqlInsertFoto);
+			$idFoto = $mysqli->insert_id;
+			
 			if ($x == $_POST['portada']) {
-				$idPortada = $mysqli->insert_id;
-				$sqlUpdatePortada = "UPDATE albumes set idPortada = $idPortada where id = $idAlbum";
+				$sqlUpdatePortada = "UPDATE albumes set idPortada = $idFoto where id = $idAlbum";
 				mysqli_query($mysqli,$sqlUpdatePortada);
 			}
-
+				
+			$destino = "fotos/".$idAlbum."/".$idFoto."-".$nombre;
+			$sqlUpdateDestino = "UPDATE fotos SET path = '$destino' WHERE id = $idFoto";
+			mysqli_query($mysqli,$sqlUpdateDestino);
+			
+			$ruta_provisional = $file["tmp_name"][$x];
+			$src = $carpeta.$idFoto."-".$nombre;
+			move_uploaded_file($ruta_provisional, $src);
+			
+			
+			
 		}
 		mysqli_commit($mysqli);
 		mysqli_close($mysqli);

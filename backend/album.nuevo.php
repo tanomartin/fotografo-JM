@@ -98,6 +98,14 @@ if ($_SESSION ['username'] == NULL)
 
 <script>
 $(function(){  
+	$(document).ready(function () {
+	    $("#album-form").submit(function () {
+	        $("#album-submit").attr("disabled", true);
+	        return true;
+	    });
+	});
+
+	
     $("#file").on("change", function(){
     	/* Limpiar vista previa */
         $("#vista-previa").html('');

@@ -80,17 +80,33 @@ if ($_SESSION ['username'] == NULL)
 							<?php } ?>
 						</select>
 					</div>			
+					
 					<h1 class="page-header">Fotografias</h1>
-					<label>Agregar Fotografia</label>
 					<div class="form-group">
-						<?php if ($canFotos < 30) { ?>
-								<div class="col-lg-10"><input type="file" id="file" name="file" class="form-control" /></div>
-								<div class="col-lg-2"><input type="button" name="subirfoto" id="subirfoto" tabindex="4" class="btn btn-primary" value="Agregar"></div>
+					   <?php if (isset($_GET['result'])) {
+								if ($_GET['result'] == 0) {?>
+									<div class="alert alert-success" id="file-error">Se subio correctamente la foto</div>
+						<?php 	}
+							 }
+							 if ($canFotos < 30) { ?>
+								<div class="alert alert-danger" id="file-error" style="display: none"></div>
+								<div class="form-group">
+									<label>Agregar Fotografia</label>
+									<input type="file" id="file" name="file" class="form-control" />
+								</div>
+								<div class="form-group">
+									<label>Descripcion</label>
+									<input type="text" id="descripcion" name="descripcion" class="form-control" />
+								</div>
+								<div class="form-group">
+									<input type="button" disabled="disabled" name="subirfoto" id="subirfoto" tabindex="4" class="btn btn-primary" value="Agregar">
+								</div>
 						<?php } else { ?>
 								<div class="alert alert-warning">No se puede agregar mas fotos a este Album</div>
 						<?php }?>
 					</div>
 					<label style="margin-top: 15px">Fotografias del Album [<?php echo $canFotos?>]</label>
+					
 					<div class="form-group">
 						<table class="table" id="fotografias" style="margin-bottom: 15px">
 							<thead>
@@ -109,7 +125,7 @@ if ($_SESSION ['username'] == NULL)
 									$disabled = "";
 								}?>
 							    <tr>
-							    	<td style="vertical-align: inherit; font-size: 25px"><a href="#" <?php echo $disabled ?> data-toggle="modal" data-href="album.edit.deletefoto.php?id=<?php echo $foto['id']?>&path=<?php echo $foto['path']?>&idAlbum=<?php echo $fila['id']?>" data-target="#confirm-delete" title="Eliminar"><span class="glyphicon glyphicon-trash"></span></a></td>
+							    	<td style="vertical-align: inherit; font-size: 25px"><a href="#" <?php echo $disabled ?> data-toggle="modal" data-href="album.editar.deletefoto.php?id=<?php echo $foto['id']?>&path=<?php echo $foto['path']?>&idAlbum=<?php echo $fila['id']?>" data-target="#confirm-delete" title="Eliminar"><span class="glyphicon glyphicon-trash"></span></a></td>
 							    	<td><img class='img-thumbnail'  src="<?php echo "../".$foto['path']?>" width='150' height='150'></td>
 							    	<td><input name='portada' value="<?php echo $foto['id']?>" type='radio' <?php echo $checked ?>></td>
 							    	<td width='75%'><input value="<?php echo $foto['bajada'] ?>" class='form-control input-lg' type='text' id='descrip-<?php echo $foto['id']?>' name='descrip-<?php echo $foto['id']?>'  maxlength='30'/></td>
@@ -141,7 +157,7 @@ if ($_SESSION ['username'] == NULL)
 			                </div>
 			            </div>
 			        </div>
-			    </div>		 
+			 </div>		 
             
         </div>
     </div>
@@ -160,10 +176,72 @@ if ($_SESSION ['username'] == NULL)
 <script src="js/startmin.js"></script>
 
 <script type="text/javascript">
+$(function(){  
+	$(document).ready(function () {
+	    $("#albumedit-form").submit(function () {
+	        $("#albumedit-submit").attr("disabled", true);
+	        return true;
+	    });
+	});
 
-$('#confirm-delete').on('show.bs.modal', function(e) {
-    $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+	
+	$('#confirm-delete').on('show.bs.modal', function(e) {
+	    $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+	});
+
+	
+    $("#file").on("change", function(){
+    	$('#file-error').hide();
+    	$("#subirfoto").prop('disabled', true);
+    	if ($("#file").val() != '') {
+    		var inputFileImage = document.getElementById("file");
+    		var foto = inputFileImage.files[0];
+    		var size = foto.size;
+    		var type = foto.type;
+    		if (size > 512*1024) {
+    			$('#file-error').html("No se pueden subir fotos de mas de 500 KB");
+    			$('#file-error').show();
+    			$("#file").val("");
+	        } else if(type != 'image/jpeg' && type != 'image/jpg' && type != 'image/png' && type != 'image/gif') {
+	        	$('#file-error').html("El archivo es de un tipo no soportado por el sistema");
+				$('#file-error').show();
+				$("#file").val("");
+            } else {
+    			$("#subirfoto").prop('disabled', false);
+	        }
+    	}
+	});
+
+    $("#subirfoto").click(function(){
+    	$("#subirfoto").prop('disabled', true);
+    	var inputFileImage = document.getElementById("file");
+    	var foto = inputFileImage.files[0];
+    	var data = new FormData();
+    	data.append('foto',foto);
+    	data.append('desc',$("#descripcion").val());
+		$.ajax({
+			url: "album.editar.addfoto.php?id=<?php echo $idAlbum ?>",
+			type: "POST",
+			contentType:false,
+			data:data,
+			processData:false,
+			cache:false
+		}).done(function(respuesta){
+			if (respuesta != 0) {
+				$('#file-error').html("No se pueden subir la foto. Intente mas tarde");
+    			$('#file-error').show();
+    			$("#file").val("");
+			} else {
+				var redire =  "album.editar.php?id=<?php echo $idAlbum ?>&result="+respuesta;
+				window.location.href = redire;
+			}
+		});
+	});
+
+	
 });
+
+		
 
 </script>
 
