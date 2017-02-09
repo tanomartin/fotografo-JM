@@ -9,11 +9,12 @@ try {
 	mysqli_autocommit($mysqli, FALSE);
 	
 	$idAlbum = $_GET['id'];
+	$orden = $_GET['canfotos']+1;
 	$file = $_FILES['foto'];
 	
 	$carpeta = "../fotos/".$idAlbum."/";
 	$nombre = $file["name"];
-	$sqlAddFoto = "INSERT INTO fotos VALUES('DEFAUL', $idAlbum, '".$_POST['desc']."', '')";
+	$sqlAddFoto = "INSERT INTO fotos VALUES('DEFAUL', $idAlbum, $orden, '".$_POST['desc']."', '')";
 	mysqli_query($mysqli, $sqlAddFoto);
 	$idFoto = $mysqli->insert_id;
 	

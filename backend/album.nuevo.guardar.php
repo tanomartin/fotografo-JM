@@ -26,8 +26,8 @@ try {
 			$nombre = $file["name"][$x];
 			$nombreDes = "descrip".$x;
 			$descrip = $_POST[$nombreDes];
-			
-			$sqlInsertFoto = "INSERT INTO fotos VALUES(DEFAULT, $idAlbum, '$descrip','')";
+			$orden = $x+1;
+			$sqlInsertFoto = "INSERT INTO fotos VALUES(DEFAULT, $idAlbum, $orden, '$descrip','')";
 			mysqli_query($mysqli,$sqlInsertFoto);
 			$idFoto = $mysqli->insert_id;
 			

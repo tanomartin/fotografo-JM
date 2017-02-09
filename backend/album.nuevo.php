@@ -141,16 +141,17 @@ $(function(){
 	            }
 	            else {
 	            	$("#titlePrevia").show();
-	            	
+	            	var checked = "";
+	
+	            	if (nrofoto == 0) {
+	 					var checked = "checked='checked'";
+	 					var cabecera = "<thead><th>Foto</th><th>Portada</th><th>Descripcion</th></thead><tbody>"
+	 					$('#vista-previa').append(cabecera);
+		            } 
+	
 	              	var objeto_url = navegador.createObjectURL(archivos[x]);
-	              	var linea = "<tr><td><img class='img-thumbnail'  src="+objeto_url+" width='150' height='150'>";
-	             	if (nrofoto == 0) {
-						var cabecera = "<thead><th>Foto</th><th>Portada</th><th>Descripcion</th></thead><tbody>"
-						$('#vista-previa').append(cabecera);
-						linea += "<td><input name='portada' value="+nrofoto+" type='radio' checked='checked'></td>";
-	             	} else {
-	             		linea += "<td><input name='portada' value="+nrofoto+" type='radio'></td>";
-	             	}
+	              	var linea = "<tr><td><img class='img-thumbnail'  src="+objeto_url+" width='150' height='150'></td>";
+					linea += "<td><input name='portada' value="+nrofoto+" type='radio' "+checked+"></td>";
 	             	linea += "<td width='75%'><input class='form-control input-lg' type='text' id='descrip"+nrofoto+"' name='descrip"+nrofoto+"'  maxlength='30'/></td></tr>";
 	             	$('#vista-previa').append(linea);	
 	             	nrofoto++;

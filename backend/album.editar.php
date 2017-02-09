@@ -48,7 +48,7 @@ if ($_SESSION ['username'] == NULL)
 	$resultado = $mysqli->query($sqlAlbum);
 	$fila = $resultado->fetch_assoc();
 	
-	$sqlFotos = "select * from fotos a where a.idAlbum = $idAlbum";
+	$sqlFotos = "select * from fotos a where a.idAlbum = $idAlbum order by orden";
 	$resFotos = $mysqli->query($sqlFotos);
 	$canFotos = $resFotos->num_rows;
 	
@@ -111,6 +111,7 @@ if ($_SESSION ['username'] == NULL)
 						<table class="table" id="fotografias" style="margin-bottom: 15px">
 							<thead>
 								<th></th>
+								<th>Orden</th>
 								<th>Foto</th>
 								<th>Portada</th>
 								<th>Descripcion</th>
@@ -125,10 +126,29 @@ if ($_SESSION ['username'] == NULL)
 									$disabled = "";
 								}?>
 							    <tr>
-							    	<td style="vertical-align: inherit; font-size: 25px"><a href="#" <?php echo $disabled ?> data-toggle="modal" data-href="album.editar.deletefoto.php?id=<?php echo $foto['id']?>&path=<?php echo $foto['path']?>&idAlbum=<?php echo $fila['id']?>" data-target="#confirm-delete" title="Eliminar"><span class="glyphicon glyphicon-trash"></span></a></td>
+							    	<td style="vertical-align: inherit; font-size: 25px">
+							    		<a href="#" <?php echo $disabled ?> data-toggle="modal" data-href="album.editar.deletefoto.php?id=<?php echo $foto['id']?>&path=<?php echo $foto['path']?>&idAlbum=<?php echo $fila['id']?>&orden=<?php echo $foto['orden']?>" data-target="#confirm-delete" title="Eliminar"><span class="glyphicon glyphicon-trash"></span></a>
+							    	</td>
+							    	<td style="vertical-align: inherit; font-size: 20px">
+							    		<input name='orden' value="<?php echo $foto['orden']?>" type='text' size='1' style="display: none">
+							    		<?php 		    			
+							    			if ($canFotos > 1) {
+							    				$fechaUp = "<a href='album.editar.upfoto.php?id=".$foto['id']."&idAlbum=".$fila['id']."&orden=".$foto['orden']."'><span class='glyphicon glyphicon-arrow-up'></span></a>";
+							    				$fechaDown = "<a href='album.editar.downfoto.php?id=".$foto['id']."&idAlbum=".$fila['id']."&orden=".$foto['orden']."'><span class='glyphicon glyphicon-arrow-down'></span></a>";
+							    				$flechas = $fechaUp.$fechaDown;
+								    			if ($foto['orden'] == 1) {
+								    				$flechas = $fechaDown;
+								    			}
+								    			if ($foto['orden'] == $canFotos) {
+								    				$flechas = $fechaUp;
+								    			}
+								    			echo $flechas;
+							    			}
+							    		?>
+							    	</td>
 							    	<td><img class='img-thumbnail'  src="<?php echo "../".$foto['path']?>" width='150' height='150'></td>
 							    	<td><input name='portada' value="<?php echo $foto['id']?>" type='radio' <?php echo $checked ?>></td>
-							    	<td width='75%'><input value="<?php echo $foto['bajada'] ?>" class='form-control input-lg' type='text' id='descrip-<?php echo $foto['id']?>' name='descrip-<?php echo $foto['id']?>'  maxlength='30'/></td>
+							    	<td width='60%'><input value="<?php echo $foto['bajada'] ?>" class='form-control input-lg' type='text' id='descrip-<?php echo $foto['id']?>' name='descrip-<?php echo $foto['id']?>'  maxlength='30'/></td>
 							    </tr>
 						<?php }?>
 							</tbody>
@@ -220,7 +240,7 @@ $(function(){
     	data.append('foto',foto);
     	data.append('desc',$("#descripcion").val());
 		$.ajax({
-			url: "album.editar.addfoto.php?id=<?php echo $idAlbum ?>",
+			url: "album.editar.addfoto.php?id=<?php echo $idAlbum ?>&canfotos=<?php echo $canFotos?>",
 			type: "POST",
 			contentType:false,
 			data:data,
