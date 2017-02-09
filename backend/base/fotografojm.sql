@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-02-2017 a las 20:08:06
+-- Tiempo de generación: 09-02-2017 a las 23:50:00
 -- Versión del servidor: 5.6.15-log
 -- Versión de PHP: 5.4.24
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `albumes` (
   `id` int(4) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(15) NOT NULL,
+  `titulo` varchar(15) NOT NULL,
   `activo` int(1) NOT NULL,
   `idPortada` int(5) NOT NULL,
   `tipo` int(1) NOT NULL,
@@ -44,10 +44,23 @@ CREATE TABLE IF NOT EXISTS `albumes` (
 CREATE TABLE IF NOT EXISTS `fotos` (
   `id` int(5) NOT NULL AUTO_INCREMENT,
   `idAlbum` int(4) NOT NULL,
+  `orden` int(2) NOT NULL,
   `bajada` text NOT NULL,
   `path` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `slider`
+--
+
+CREATE TABLE IF NOT EXISTS `slider` (
+  `idFoto` int(2) NOT NULL,
+  `orden` int(2) NOT NULL,
+  PRIMARY KEY (`idFoto`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -90,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `username`, `password`, `nombre`, `email`) VALUES
-(1, 'admin', '123456', 'Administrador', 'tanomartin05@hotmail.com');
+(1, 'admin', '123456', 'Administrador', 'tanomartin05@gmail.com');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
