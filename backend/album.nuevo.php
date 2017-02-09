@@ -77,7 +77,7 @@ if ($_SESSION ['username'] == NULL)
                 <table class="table" id="problemas"></table>
                 
            		<div class="form-group">
-					<input type="submit" name="album-submit" id="album-submit" tabindex="4" class="btn btn-primary" value="Guardar">
+					<input type="submit" disabled="disabled" name="album-submit" id="album-submit" tabindex="4" class="btn btn-primary" value="Guardar">
 				</div>
             </form>
         </div>
@@ -105,9 +105,11 @@ $(function(){
 	    });
 	});
 
+
 	
     $("#file").on("change", function(){
     	/* Limpiar vista previa */
+    	$("#album-submit").attr("disabled", true);
         $("#vista-previa").html('');
         $("#problemas").html('');
         $("#titlePrevia").hide();
@@ -116,7 +118,8 @@ $(function(){
         var archivos = document.getElementById('file').files;
         var navegador = window.URL || window.webkitURL;
 		var limite = 30;
-       	 
+		var sizeLimite = 8388608;
+
 		if (archivos.length > limite) {
 			$('#file-error').html("No se pueden subir mas de 30 fotos por album");
 			$('#file-error').show();
@@ -124,9 +127,12 @@ $(function(){
 		} else {    
 	        /* Recorrer los archivos */
 	        var nrofoto = 0;
+	        var nroprob = 0;
+			var sizeTotal = 0;
 	        for(x=0; x<archivos.length; x++) {
-	            /* Validar tamaño y tipo de archivo */
+	            /* Validar tamaño y tipo de archivo */	           
 	            var size = archivos[x].size;
+	            sizeTotal += size;
 	            var type = archivos[x].type;
 	            var name = archivos[x].name
 	            if (size > 512*1024) {
@@ -148,7 +154,8 @@ $(function(){
 	 					var cabecera = "<thead><th>Foto</th><th>Portada</th><th>Descripcion</th></thead><tbody>"
 	 					$('#vista-previa').append(cabecera);
 		            } 
-	
+
+	            	
 	              	var objeto_url = navegador.createObjectURL(archivos[x]);
 	              	var linea = "<tr><td><img class='img-thumbnail'  src="+objeto_url+" width='150' height='150'></td>";
 					linea += "<td><input name='portada' value="+nrofoto+" type='radio' "+checked+"></td>";
@@ -159,6 +166,14 @@ $(function(){
 	        }
 	        var fin = "</tbody>";
 	        $('#vista-previa').append(fin);
+
+	        if (nroprob > 0) {
+	        	$('#file-error').html("No se puede crear el album porque hay archivo con problemas");
+				$('#file-error').show();
+				$("#file").val("");
+	        } else {
+	        	 $("#album-submit").attr("disabled", false);
+	        }
 		}
     });
 });

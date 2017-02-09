@@ -43,9 +43,6 @@ try {
 			$ruta_provisional = $file["tmp_name"][$x];
 			$src = $carpeta.$idFoto."-".$nombre;
 			move_uploaded_file($ruta_provisional, $src);
-			
-			
-			
 		}
 		mysqli_commit($mysqli);
 		mysqli_close($mysqli);

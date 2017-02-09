@@ -61,7 +61,6 @@ if ($_SESSION ['username'] == NULL)
 				if ($rows > 0) { ?>
 		            <table class="table">
 		            	<thead>
-		            		<th>Id</th>
 		            		<th>Titulo</th>
 		            		<th>Portada</th>
 		            		<th>Estado</th>
@@ -71,7 +70,6 @@ if ($_SESSION ['username'] == NULL)
 		            	<tbody>
 	             <?php while($fila = $resultado->fetch_assoc()) { ?>
 	                      <tr>
-	                          <td><?php echo $fila['id']?></td>
 	                          <td><?php echo $fila['titulo']?></td>
 	                          <td><img src="../<?php echo $fila['path']?>" class="img-responsive" alt="Cinque Terre" style="width: 100px"/></td>
 	                       	  <td><?php if ($fila['activo'] == 1) { ?>
