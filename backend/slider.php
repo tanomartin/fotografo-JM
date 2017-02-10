@@ -52,6 +52,7 @@ if ($_SESSION ['username'] == NULL)
                 </div>
             </div>
 			<?php
+				$arraySlider = array();
             	$sqlSlider = "SELECT s.*, f.path, a.titulo, a.activo FROM slider s, fotos f, albumes a WHERE s.idFoto = f.id and f.idAlbum = a.id order by s.orden";
 				$resSlider = $mysqli->query($sqlSlider);
 				$numSlider = $resSlider->num_rows;
@@ -68,8 +69,7 @@ if ($_SESSION ['username'] == NULL)
 			            		<th>Estado</th>
 			            	</thead>
 			            	<tbody>
-			  <?php 	$arraySlider = array();
-			  			while($slider = $resSlider->fetch_assoc()) {
+			  <?php  while($slider = $resSlider->fetch_assoc()) {
 			  				$arraySlider[$slider['idFoto']] = $slider['idFoto']; ?>
 			  					<tr>
 			  						<td style="vertical-align: inherit; font-size: 25px">
