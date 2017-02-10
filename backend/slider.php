@@ -107,8 +107,8 @@ if ($_SESSION ['username'] == NULL)
 		 <?php  }
 		  		$sqlFotos = "SELECT f.*, a.titulo, a.activo, t.descripcion FROM fotos f, albumes a, tipos t WHERE f.idAlbum = a.id and a.tipo = t.id order by a.id";
 		  		$resFotos = $mysqli->query($sqlFotos);
-		  		$numSlider = $resFotos->num_rows;
-		  		if ($numSlider > 0) { ?>
+		  		$numFotos = $resFotos->num_rows;
+		  		if ($numFotos > 0) { ?>
 		  		<div class="row">
 	                <div class="col-lg-12">
 	                    <h1 class="page-header">Fotografias</h1>
