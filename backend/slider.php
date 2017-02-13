@@ -20,6 +20,9 @@ if ($_SESSION ['username'] == NULL)
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Toggle CSS -->
+    <link href="css/bootstrap-toggle.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
     <link href="css/metisMenu.min.css" rel="stylesheet">
@@ -29,6 +32,17 @@ if ($_SESSION ['username'] == NULL)
 
     <!-- Custom Fonts -->
     <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+    <style>
+	  .toggle.ios, .toggle-on.ios, .toggle-off.ios { border-radius: 20px; }
+	  .toggle.ios .toggle-handle { border-radius: 20px; }
+	</style>
+	
+	<style>
+	  .toggle.android { border-radius: 0px;}
+	  .toggle.android .toggle-handle { border-radius: 0px; }
+	</style>
+    
 </head>
 <body>
 
@@ -48,7 +62,7 @@ if ($_SESSION ['username'] == NULL)
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Slider</h1>
+                    <h1 class="page-header">Fotos Home</h1>
                 </div>
             </div>
 			<?php
@@ -59,14 +73,14 @@ if ($_SESSION ['username'] == NULL)
 				if ($numSlider == 0) { ?>
 					<div class="alert alert-warning">En la actulidad no hay ninguna foto seleccionada para el slider de la home. Se mostraran las fotos por defecto</div>
 		  <?php } else { ?>
-		  			<label style="margin-top: 15px">Fotografias del Slider [<?php echo $numSlider?>]</label>
+		  			<label style="margin-top: 15px">Fotografias incluidas en la Home [<?php echo $numSlider?>]</label>
 			  			<table class="table">
 			  				<thead>
 			  					<th></th>
 			  					<th>Orden</th>
 			            		<th>Foto</th>
 			            		<th>Album</th>  
-			            		<th>Estado</th>
+			            		<th>Estado Album</th>
 			            	</thead>
 			            	<tbody>
 			  <?php  while($slider = $resSlider->fetch_assoc()) {
@@ -104,23 +118,22 @@ if ($_SESSION ['username'] == NULL)
 			  <?php		} ?>
 			  				</tbody>
 			  			</table>
-		 <?php  }
-		  		$sqlFotos = "SELECT f.*, a.titulo, a.activo, t.descripcion FROM fotos f, albumes a, tipos t WHERE f.idAlbum = a.id and a.tipo = t.id order by a.id";
+		 <?php  } ?>
+				<div class="row">
+				 <div class="col-lg-12">
+				 <h1 class="page-header">Fotografias</h1>
+				 </div>
+				</div>
+		 <?php  $sqlFotos = "SELECT f.*, a.titulo, a.activo FROM fotos f, albumes a WHERE f.idAlbum = a.id order by a.id";
 		  		$resFotos = $mysqli->query($sqlFotos);
 		  		$numFotos = $resFotos->num_rows;
 		  		if ($numFotos > 0) { ?>
-		  		<div class="row">
-	                <div class="col-lg-12">
-	                    <h1 class="page-header">Fotografias</h1>
-	                </div>
-           		</div>
 		  		<form id="slider-form" action="slider.guardar.php" method="post" role="form">
 					  <table class="table">
 		            	<thead>
 		            		<th>Foto</th>
 		            		<th>Album</th>  
-		            		<th>Estado</th>
-		            		<th>Tipo</th>
+		            		<th>Estado Album</th>
 		            		<th></th>
 		            	</thead>
 		            	<tbody>
@@ -134,7 +147,6 @@ if ($_SESSION ['username'] == NULL)
 	                       	  	  			<span class="glyphicon glyphicon-remove" title="Inactivo" style="color: red; font-size: larger"></span>
 	                       	  	  <?php } ?>
 	                       	  </td>
-	                       	  <td><?php echo $foto['descripcion']?></td>
 	                       	  <td>
 	                       	  	  <?php if (in_array($foto['id'],$arraySlider)) {
 	                       	  	  			$checked = "checked = 'checked'";
@@ -142,7 +154,7 @@ if ($_SESSION ['username'] == NULL)
 		  						  			$checked = "";
 		  						  		}
 		  						  ?>	
-	                       	  	  <input type="checkbox" name="foto-<?php echo $foto['id']?>" value="<?php echo $foto['id']?>" <?php echo $checked?>/>
+	                       	  	  <input type="checkbox" name="foto-<?php echo $foto['id']?>" value="<?php echo $foto['id']?>" <?php echo $checked?> data-toggle="toggle" data-onstyle="success" data-offstyle="danger" />
 	                       	  </td>
 	                       </tr>
                   <?php } ?>
@@ -189,6 +201,9 @@ if ($_SESSION ['username'] == NULL)
 <!-- Custom Theme JavaScript -->
 <script src="js/startmin.js"></script>
 
+<!-- Toggle -->
+<script src="js/bootstrap-toggle.min.js"></script>
+
 <script type="text/javascript">
 	$(document).ready(function () {
 	    $("#slider-form").submit(function () {
@@ -200,7 +215,7 @@ if ($_SESSION ['username'] == NULL)
 	$('#confirm-delete').on('show.bs.modal', function(e) {
 	    $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
 	});
-	
+
 </script>
 
 </body>

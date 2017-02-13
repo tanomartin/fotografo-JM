@@ -151,7 +151,7 @@ $(function(){
 	
 	            	if (nrofoto == 0) {
 	 					var checked = "checked='checked'";
-	 					var cabecera = "<thead><th>Foto</th><th>Portada</th><th>Descripcion</th></thead><tbody>"
+	 					var cabecera = "<thead><th>Foto</th><th>Portada</th><th>Titulo</th><th>Descripcion</th></thead><tbody>"
 	 					$('#vista-previa').append(cabecera);
 		            } 
 
@@ -159,7 +159,8 @@ $(function(){
 	              	var objeto_url = navegador.createObjectURL(archivos[x]);
 	              	var linea = "<tr><td><img class='img-thumbnail'  src="+objeto_url+" width='150' height='150'></td>";
 					linea += "<td><input name='portada' value="+nrofoto+" type='radio' "+checked+"></td>";
-	             	linea += "<td width='75%'><input class='form-control input-lg' type='text' id='descrip"+nrofoto+"' name='descrip"+nrofoto+"'  maxlength='30'/></td></tr>";
+					linea += "<td><input size='15' type='text' class='form-control' id='titulo"+nrofoto+"' name='titulo"+nrofoto+"'></input></td>";
+	             	linea += "<td><textarea style='resize: none' class='form-control' id='descrip"+nrofoto+"' name='descrip"+nrofoto+"' rows='5'></textarea></td></tr>";
 	             	$('#vista-previa').append(linea);	
 	             	nrofoto++;
 	            }

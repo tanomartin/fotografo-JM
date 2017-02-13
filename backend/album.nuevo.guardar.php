@@ -24,10 +24,12 @@ try {
 			$file = $_FILES["file"];
 			
 			$nombre = $file["name"][$x];
+			$nombreTit = "titulo".$x;
+			$titulo = $_POST[$nombreTit];
 			$nombreDes = "descrip".$x;
 			$descrip = $_POST[$nombreDes];
 			$orden = $x+1;
-			$sqlInsertFoto = "INSERT INTO fotos VALUES(DEFAULT, $idAlbum, $orden, '$descrip','')";
+			$sqlInsertFoto = "INSERT INTO fotos VALUES(DEFAULT, $idAlbum, $orden, '$titulo', '$descrip','')";
 			mysqli_query($mysqli,$sqlInsertFoto);
 			$idFoto = $mysqli->insert_id;
 			

@@ -14,7 +14,7 @@ try {
 	
 	$carpeta = "../fotos/".$idAlbum."/";
 	$nombre = $file["name"];
-	$sqlAddFoto = "INSERT INTO fotos VALUES('DEFAUL', $idAlbum, $orden, '".$_POST['desc']."', '')";
+	$sqlAddFoto = "INSERT INTO fotos VALUES('DEFAUL', $idAlbum, $orden, '".$_POST['titu']."','".$_POST['desc']."', '')";
 	mysqli_query($mysqli, $sqlAddFoto);
 	$idFoto = $mysqli->insert_id;
 	

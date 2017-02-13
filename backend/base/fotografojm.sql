@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-02-2017 a las 23:50:00
+-- Tiempo de generación: 13-02-2017 a las 16:23:27
 -- Versión del servidor: 5.6.15-log
 -- Versión de PHP: 5.4.24
 
@@ -45,6 +45,7 @@ CREATE TABLE IF NOT EXISTS `fotos` (
   `id` int(5) NOT NULL AUTO_INCREMENT,
   `idAlbum` int(4) NOT NULL,
   `orden` int(2) NOT NULL,
+  `titulo` varchar(15) NOT NULL,
   `bajada` text NOT NULL,
   `path` text NOT NULL,
   PRIMARY KEY (`id`)

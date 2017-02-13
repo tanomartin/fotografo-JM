@@ -95,8 +95,12 @@ if ($_SESSION ['username'] == NULL)
 									<input type="file" id="file" name="file" class="form-control" />
 								</div>
 								<div class="form-group">
+									<label>Titulo</label>
+									<input type="text" id="tituloFoto" name="tituloFoto" class="form-control" />
+								</div>
+								<div class="form-group">
 									<label>Descripcion</label>
-									<input type="text" id="descripcion" name="descripcion" class="form-control" />
+									<textarea style='resize: none' id="descripFoto" name="descripFoto" class="form-control" ></textarea>
 								</div>
 								<div class="form-group">
 									<input type="button" disabled="disabled" name="subirfoto" id="subirfoto" tabindex="4" class="btn btn-primary" value="Agregar">
@@ -114,6 +118,7 @@ if ($_SESSION ['username'] == NULL)
 								<th>Orden</th>
 								<th>Foto</th>
 								<th>Portada</th>
+								<th>Titulo</th>
 								<th>Descripcion</th>
 							</thead>
 							<tbody>
@@ -148,7 +153,8 @@ if ($_SESSION ['username'] == NULL)
 							    	</td>
 							    	<td><img class='img-thumbnail'  src="<?php echo "../".$foto['path']?>" width='150' height='150'></td>
 							    	<td><input name='portada' value="<?php echo $foto['id']?>" type='radio' <?php echo $checked ?>></td>
-							    	<td width='60%'><input value="<?php echo $foto['bajada'] ?>" class='form-control input-lg' type='text' id='descrip-<?php echo $foto['id']?>' name='descrip-<?php echo $foto['id']?>'  maxlength='30'/></td>
+							    	<td><input value="<?php echo $foto['titulo'] ?>" class='form-control' type='text' id='titulo-<?php echo $foto['id']?>' name='titulo-<?php echo $foto['id']?>'  maxlength='15' size='10'/></td>
+							    	<td width="45%"><textarea style='resize: none' class='form-control' id='descripcion-<?php echo $foto['id']?>' name='descripcion-<?php echo $foto['id']?>' rows='5'/><?php echo $foto['bajada']?></textarea>
 							    </tr>
 						<?php }?>
 							</tbody>
@@ -238,7 +244,8 @@ $(function(){
     	var foto = inputFileImage.files[0];
     	var data = new FormData();
     	data.append('foto',foto);
-    	data.append('desc',$("#descripcion").val());
+    	data.append('desc',$("#descripFoto").val());
+    	data.append('titu',$("#tituloFoto").val());
 		$.ajax({
 			url: "album.editar.addfoto.php?id=<?php echo $idAlbum ?>&canfotos=<?php echo $canFotos?>",
 			type: "POST",
