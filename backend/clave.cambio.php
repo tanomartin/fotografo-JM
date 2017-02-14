@@ -1,6 +1,6 @@
-<?php session_save_path("session");
-session_start();
+<?php
 include ("include/conexion.php");
+session_start();
 $sql = "select * from usuarios where id = '".$_SESSION['id']."' and password = '".$_POST['passold']."'";
 $resultado = $mysqli->query($sql);
 $cant =  $resultado->num_rows;

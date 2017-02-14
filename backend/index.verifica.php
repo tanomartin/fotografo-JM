@@ -1,6 +1,6 @@
-<?php session_save_path("../session");
+<?php 
+include ("include/conexion.php");
 session_start();
-include ("conexion.php");
 $sql = "select * from usuarios where username = '".$_POST['username']."' and password = '".$_POST['password']."'";
 $resultado = $mysqli->query($sql);
 $cant =  $resultado->num_rows;

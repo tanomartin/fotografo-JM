@@ -1,13 +1,5 @@
-<?php 
-include ("include/conexion.php");
-session_save_path ("session");
-session_start ();
+<?php include_once ("include/control.php"); 
 
-if ($_SESSION ['username'] == NULL)
-	header ( "Location: index.html" );
-
-var_dump($_POST);
-	
 try {
 	mysqli_autocommit($mysqli, FALSE);
 	

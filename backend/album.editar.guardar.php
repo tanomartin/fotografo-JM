@@ -1,10 +1,4 @@
-<?php 
-include ("include/conexion.php");
-session_save_path ("session");
-session_start ();
-
-if ($_SESSION ['username'] == NULL)
-	header ( "Location: index.html" );	
+<?php include_once ("include/control.php");
 
 try {
 	$id = $_GET['id'];

@@ -1,5 +1,5 @@
 <?php
-include ("conexion.php");
+include ("include/conexion.php");
 $mail = $_POST ['email'];
 $username = $_POST ['username'];
 $sql = "select * from usuarios where username = '$username' and email = '$mail'";

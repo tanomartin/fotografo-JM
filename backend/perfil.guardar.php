@@ -1,4 +1,4 @@
-<?php session_save_path("session");
+<?php 
 session_start();
 include ("include/conexion.php");
 $sqlUpdate = "update usuarios set username = '".$_POST['username']."', nombre = '".$_POST['nombre']."', email = '".$_POST['email']."' where id = ".$_SESSION['id'];
