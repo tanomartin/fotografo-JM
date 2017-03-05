@@ -14,7 +14,7 @@
 		}
 		$claves_aleatorias = array_rand($arraySlider, 1);
 	} else {
-		$arraySlider[0] = array('path' => "standar/calle1.jpg");
+		$arraySlider[0] = array('path' => "standar/default-img.jpg");
 		$claves_aleatorias = 0;
  	}
  	
