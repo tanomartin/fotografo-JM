@@ -17,6 +17,18 @@
 		$arraySlider[0] = array('path' => "standar/calle1.jpg");
 		$claves_aleatorias = 0;
  	}
+ 	
+ 	$arrayAlbum = array();
+ 	$sqlAlbumes = "select * from albumes a where activo = 1";
+ 	$resAlbumes = $mysqli->query($sqlAlbumes);
+ 	$rows = $resAlbumes->num_rows;
+ 	if ($rows > 0) { 
+ 		$i=0;
+ 		while($album = $resAlbumes->fetch_assoc()) {
+ 			$arrayAlbum[$i] = $album;
+ 			$i++;
+ 		}
+ 	}
 	
-	$twig->display('index.html', array("foto" => $arraySlider[$claves_aleatorias]));
+	$twig->display('index.html', array("foto" => $arraySlider[$claves_aleatorias], "albumes" => $arrayAlbum));
 ?>

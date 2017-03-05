@@ -21,10 +21,8 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet">
 
-
     <!-- Custom Fonts -->
     <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
     <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:400,700,800" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
 
@@ -91,130 +89,20 @@
             <section class="tittle-album">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h2>Serie Nueva York</h2>
+                        <h2>{{album.titulo}}</h2>
                     </div>
                 </div>
             </section>
 <!--FIN IMG HOME !-->
-         
+            
 
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner">
-    <div class="item active ">
-        <div class="img-slider">
-        <img src="img/slide1.jpg" alt="...">
-        </div>
-    </div>
-    <div class="item">
-        <div class="img-slider">
-        <img src="img/slide2.jpg" alt="...">
-        </div>
-    </div>
-    <div class="item">
-        <div class="img-slider">
-        <img src="img/slide3.jpg" alt="...">
-        </div>
-    </div>
-    <div class="item">
-        <div class="img-slider">
-        <img src="img/slide4.jpg" alt="...">
-        </div>
-    </div>
-    <div class="item">
-        <div class="img-slider">
-        <img src="img/slide5.jpg" alt="...">
-        </div>
-    </div>
-    <div class="item">
-        <div class="img-slider">
-        <img src="img/slide6.jpg" alt="...">
-        </div>
-    </div>
-    <div class="item">
-        <div class="img-slider">
-        <img src="img/slide7.jpg" alt="...">
-        </div>
-    </div>
-    <div class="item">
-        <div class="img-slider">
-        <img src="img/slide8.jpg" alt="...">
-        </div>
-    </div>
-    <div class="item">
-        <div class="img-slider">
-        <img src="img/slide9.jpg" alt="...">
-        </div>
-    </div>
-    <div class="item">
-        <div class="img-slider">
-        <img src="img/slide10.jpg" alt="...">
-        </div>
-    </div>
-    <div class="item">
-        <div class="img-slider">
-        <img src="img/slide11.jpg" alt="...">
-        </div>
-    </div>
-    <div class="item">
-        <div class="img-slider">
-        <img src="img/slide12.jpg" alt="...">
-        </div>
-    </div>
-    <div class="item">
-        <div class="img-slider">
-        <img src="img/slide13.jpg" alt="...">
-        </div>
-    </div>
-    <div class="item">
-        <div class="img-slider">
-        <img src="img/slide14.jpg" alt="...">
-        </div>
-    </div>
-    <div class="item">
-        <div class="img-slider">
-        <img src="img/slide15.jpg" alt="...">
-        </div>
-    </div>
-    <div class="item">
-        <div class="img-slider">
-        <img src="img/slide16.jpg" alt="...">
-        </div>
-    </div>
-    <div class="item">
-        <div class="img-slider">
-        <img src="img/slide17.jpg" alt="...">
-        </div>
-    </div>
-    <div class="item">
-        <div class="img-slider">
-        <img src="img/slide18.jpg" alt="...">
-        </div>
-    </div>
-    <div class="item">
-        <div class="img-slider">
-        <img src="img/slide19.jpg" alt="...">
-        </div>
-    </div>
-    <div class="item">
-        <div class="img-slider">
-        <img src="img/slide20.jpg" alt="...">
-        </div>
-    </div>
-  </div>
- 
-  <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-  </a>
-  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-  </a>
-</div> <!-- Carousel -->
-
-
-
+            <div class="row">
+                {% for foto in fotos %}
+	                <div class="col-xs-12 col-md-6 col-lg-3 sr-icons">
+	                     <a class="fancybox thumbnail" href="{{foto.path}}"><img src="{{foto.path}}"></a>
+               		</div>
+                {% endfor %}
+            </div>
 
 </div> <!--DIV CONTAINER !-->
 

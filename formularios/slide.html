@@ -21,8 +21,10 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet">
 
+
     <!-- Custom Fonts -->
     <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
     <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:400,700,800" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
 
@@ -89,32 +91,35 @@
             <section class="tittle-album">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h2>Serie Sábana</h2>
+                        <h2>{{album.titulo}}</h2>
                     </div>
                 </div>
             </section>
 <!--FIN IMG HOME !-->
-            
+         
 
-            <div class="row">
-                <div class="col-lg-12 sr-icons">
-                     <a class="fancybox thumbnail" href="img/calle1.jpg"><img src="img/calle1.jpg">
-                    </a>
-                </div>
-                <div class="col-lg-12 sr-icons">
-                     <a class="fancybox thumbnail" href="img/calle2.jpg"><img src="img/calle2.jpg">
-                    </a>
-                </div>
-                <div class="col-lg-12 sr-icons">
-                    <a class="fancybox thumbnail" href="img/calle3.jpg"><img src="img/calle3.jpg">
-                    </a>
-                </div>
-                <div class="col-lg-12 sr-icons">
-                    <a class="fancybox thumbnail" href="img/calle4.jpg"><img src="img/calle4.jpg">
-                    </a>
-                </div>
-            </div>
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+  	{% for foto in fotos %}
+  		<!-- ver el active -->
+	    <div class="item active">
+	        <div class="img-slider">
+	        <img src="{{foto.path}}" alt="...">
+	        </div>
+	    </div>
+    {% endfor %}
+  </div>
+ 
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div> <!-- Carousel -->
 
 
 

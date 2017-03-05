@@ -57,10 +57,9 @@
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Series<span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="album_calle.html">Calle</a></li>
-                    <li><a href="album_pinterest.html">Pinterest</a></li>
-                    <li><a href="album_slide.html">NY</a></li>
-                    <li><a href="album_sabana.html">Sábana</a></li>
+                    {% for album in albumes %}
+                    	<li><a href="album.php?id={{album.id}}">{{ album.titulo}}</a></li>
+                    {% endfor %}
                   </ul>
 
                 </li>
