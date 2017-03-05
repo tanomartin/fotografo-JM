@@ -1,0 +1,72 @@
+body {
+
+	font-family: 'Source Sans Pro', sans-serif;
+
+}
+
+a {
+
+	font-family: 'Source Sans Pro', sans-serif;
+
+}
+
+.img-home img {
+	padding-top:50px;
+	 margin: 0 auto;
+}
+
+.navbar-default {
+	margin-top:15px;
+
+}
+
+.navbar-brand {
+	font-weight:700;
+}
+
+.tittle-album h2 {
+	font-size:20px;
+	margin:65px 0 40px 15px;
+	color:#777;
+	font-weight: 700;
+
+}
+
+.single-image img{
+	width:256px;
+	height:auto;
+}
+
+.thumbsContainer {
+	/* width: 220px; */
+	float: left;
+	margin: 0 10px 10px 0;
+
+	}
+
+
+.coverContainer {
+	width: 100%;
+	display: inline-block;
+	color:#FFF;
+	}
+
+.caption {
+	padding: 10px;
+	background: white;
+
+	bottom: 0px;
+	width: 100%;
+	box-sizing: border-box;
+	}
+
+.img-slider {
+	width:100%;
+	text-align:center;
+
+}
+
+
+
+	
+
