@@ -76,22 +76,28 @@
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner">
 				{% for foto in fotos %}
-				<!-- ver el active -->
-				<div class="item active">
-					<div class="img-slider">
-						<img src="{{foto.path}}" alt="...">
-					</div>
-				</div>
+					{% if loop.index == 1 %}
+						<div class="item active">
+							<div class="img-slider">
+								<img src="{{foto.path}}" alt="...">
+							</div>
+						</div>
+					{% else %}
+						<div class="item">
+							<div class="img-slider">
+								<img src="{{foto.path}}" alt="...">
+							</div>
+						</div>
+					{% endif %}
 				{% endfor %}
 			</div>
-
+			
 			<!-- Controls -->
-			<a class="left carousel-control" href="#carousel-example-generic"
-				role="button" data-slide="prev"> <span
-				class="glyphicon glyphicon-chevron-left"></span>
-			</a> <a class="right carousel-control" href="#carousel-example-generic"
-				role="button" data-slide="next"> <span
-				class="glyphicon glyphicon-chevron-right"></span>
+			<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev"> 
+				<span class="glyphicon glyphicon-chevron-left"></span>
+			</a> 
+			<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next"> 
+				<span class="glyphicon glyphicon-chevron-right"></span>
 			</a>
 		</div>
 		<!-- Carousel -->
