@@ -3,7 +3,7 @@
 </div>
 
 <ul class="nav navbar-nav navbar-left navbar-top-links">
-	<li><a href="../index.html" target="_blank"><i class="fa fa-home fa-fw"></i> Website</a></li>
+	<li><a href="../index.php" target="_blank"><i class="fa fa-home fa-fw"></i> Website</a></li>
 	<li><a href="album.php"><i class="fa fa-picture-o fa-fw"></i> Albumes</a></li>
 	<li><a href="slider.php"><i class="fa fa-exchange fa-fw"></i>Fotos Home</a></li>
 </ul>

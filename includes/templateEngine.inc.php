@@ -2,7 +2,7 @@
 
 // Preparando el engine de templates
 // Twig
-
+$root = '';
 // Incluimos Twig Auto Loader
 require($root . 'lib/php/Twig/Autoloader.php');
 Twig_Autoloader::register();

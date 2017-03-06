@@ -24,8 +24,8 @@
  	$rows = $resAlbumes->num_rows;
  	if ($rows > 0) { 
  		$i=0;
- 		while($album = $resAlbumes->fetch_assoc()) {
- 			$arrayAlbum[$i] = $album;
+ 		while($albumMenu = $resAlbumes->fetch_assoc()) {
+ 			$arrayAlbum[$i] = $albumMenu;
  			$i++;
  		}
  	}
