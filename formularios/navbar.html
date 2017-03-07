@@ -23,9 +23,11 @@
 					aria-expanded="false">Series<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						{% for album in albumes %}
-						<li><a href="album.php?id={{album.id}}">{{ album.titulo }}</a></li>
+							<li><a href="album.php?id={{album.id}}">{{ album.titulo }}</a></li>
 						{% endfor %}
-					</ul></li>
+					</ul>
+				</li>
+				<li><a href="#">Blog</a></li>
 				<li><a href="sobremi.php">Sobre M&iacute;</a></li>
 				<li><a href="contacto.php">Contacto</a></li>
 			</ul>
