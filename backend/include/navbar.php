@@ -6,6 +6,7 @@
 	<li><a href="../index.php" target="_blank"><i class="fa fa-home fa-fw"></i> Website</a></li>
 	<li><a href="album.php"><i class="fa fa-picture-o fa-fw"></i> Albumes</a></li>
 	<li><a href="slider.php"><i class="fa fa-exchange fa-fw"></i>Fotos Home</a></li>
+	<li><a href="blog.php"><i class="fa fa-file-text-o fa-fw"></i>Blog</a></li>
 </ul>
 
 <ul class="nav navbar-right navbar-top-links">

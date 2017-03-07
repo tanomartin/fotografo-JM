@@ -7,7 +7,7 @@ try {
 	$idAlbum = $mysqli->insert_id;
 	
 	if (isset($_FILES["file"])) {	
-		$carpeta = "../fotos/".$idAlbum."/";
+		$carpeta = "../fotos/album/".$idAlbum."/";
 		if (!file_exists ( $carpeta )) {
 			if(!mkdir($carpeta, 0777, true)) {
 	    		die('Fallo al crear las carpetas...');
@@ -32,7 +32,7 @@ try {
 				mysqli_query($mysqli,$sqlUpdatePortada);
 			}
 				
-			$destino = "fotos/".$idAlbum."/".$idFoto."-".$nombre;
+			$destino = "fotos/album/".$idAlbum."/".$idFoto."-".$nombre;
 			$sqlUpdateDestino = "UPDATE fotos SET path = '$destino' WHERE id = $idFoto";
 			mysqli_query($mysqli,$sqlUpdateDestino);
 			
