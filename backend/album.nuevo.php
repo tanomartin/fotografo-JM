@@ -111,7 +111,7 @@ $(function(){
         $("#titleProblemas").hide();
         var archivos = document.getElementById('file').files;
         var navegador = window.URL || window.webkitURL;
-		var limite = 30;
+		var limite = 20;
 		var sizeLimite = 8388608;
 
 		if (archivos.length > limite) {
