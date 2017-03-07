@@ -80,9 +80,10 @@ CREATE TABLE IF NOT EXISTS `tipos` (
 --
 
 INSERT INTO `tipos` (`id`, `descripcion`) VALUES
-(1, 'Tipo Pinterest'),
-(2, 'Tipo Mosaico'),
-(3, 'Imagenes al 100% continuas');
+(1, 'Tipo Mosaico'),
+(2, 'Tipo Pinterest'),
+(3, 'Imagenes al 100% continuas'),
+(4, 'Slider');
 
 -- --------------------------------------------------------
 
