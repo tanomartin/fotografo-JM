@@ -7,7 +7,7 @@
 	$resAlbum = $mysqli->query($sqlAlbum);
 	$album = $resAlbum->fetch_assoc();
 	
-	$sqlFotos = "select * from fotos a where a.idEntidad = $idAlbum order by orden";
+	$sqlFotos = "select * from fotos a where a.idAlbum = $idAlbum order by orden";
 	$resFotos = $mysqli->query($sqlFotos);
 	$fotos = array();
 	$f=0;

@@ -59,7 +59,7 @@
             </div>
 			<?php
 				$arraySlider = array();
-            	$sqlSlider = "SELECT s.*, f.path, a.titulo, a.activo FROM slider s, fotos f, albumes a WHERE s.idFoto = f.id and f.idEntidad = a.id order by s.orden";
+            	$sqlSlider = "SELECT s.*, f.path, a.titulo, a.activo FROM slider s, fotos f, albumes a WHERE s.idFoto = f.id and f.idAlbum = a.id order by s.orden";
 				$resSlider = $mysqli->query($sqlSlider);
 				$numSlider = $resSlider->num_rows;
 				if ($numSlider == 0) { ?>
@@ -116,7 +116,7 @@
 				 <h1 class="page-header">Fotografias</h1>
 				 </div>
 				</div>
-		 <?php  $sqlFotos = "SELECT f.*, a.titulo, a.activo FROM fotos f, albumes a WHERE f.idEntidad = a.id order by a.id";
+		 <?php  $sqlFotos = "SELECT f.*, a.titulo, a.activo FROM fotos f, albumes a WHERE f.idAlbum = a.id order by a.id";
 		  		$resFotos = $mysqli->query($sqlFotos);
 		  		$numFotos = $resFotos->num_rows;
 		  		if ($numFotos > 0) { ?>

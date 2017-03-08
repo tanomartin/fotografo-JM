@@ -3,7 +3,7 @@
 	include('backend/include/conexion.php');
 	
 	$arraySlider = array();
-	$sqlSlider = "SELECT s.*, f.path, a.titulo, a.activo FROM slider s, fotos f, albumes a WHERE s.idFoto = f.id and f.idEntidad = a.id order by s.orden";
+	$sqlSlider = "SELECT s.*, f.path, a.titulo, a.activo FROM slider s, fotos f, albumes a WHERE s.idFoto = f.id and f.idAlbum = a.id order by s.orden";
 	$resSlider = $mysqli->query($sqlSlider);
 	$numSlider = $resSlider->num_rows;
 	if ($numSlider > 0) {

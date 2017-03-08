@@ -8,7 +8,7 @@ try {
 	$path = $_GET['path'];
 	$idAlbum = $_GET['idAlbum'];
 
-	$sqlReordenamiento = "SELECT * FROM fotos WHERE idEntidad = $idAlbum and orden > $orden order by orden";
+	$sqlReordenamiento = "SELECT * FROM fotos WHERE idAlbum = $idAlbum and orden > $orden order by orden";
 	$resReordenamiento = $mysqli->query($sqlReordenamiento);
 	while ($foto = $resReordenamiento->fetch_assoc()) {
 		$nuevoOrden = $foto['orden'] - 1;
