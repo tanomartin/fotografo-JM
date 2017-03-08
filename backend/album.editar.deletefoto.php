@@ -16,9 +16,29 @@ try {
 		mysqli_query($mysqli, $sqlUpdateOrden);
 	}
 	
+	
+	$sqlSelectSlider = "SELECT * FROM slider WHERE idFoto = $id";
+	$resSelectSlider = $mysqli->query($sqlSelectSlider);
+	$rows = $resSelectSlider->num_rows;
+	if ($rows > 0) {
+		$sqlDeleteSlide = "DELETE FROM slider WHERE idFoto = $id";
+		mysqli_query($mysqli, $sqlDeleteSlide);
+		
+		$sqlSelectOrdenSlider = "SELECT * FROM slider order by orden";
+		$resSelectOrdenSlider = $mysqli->query($sqlSelectOrdenSlider);
+		$rowsUpdate = $resSelectOrdenSlider->num_rows;
+		if ($rowsUpdate > 0) {
+			$orden = 1;
+			while($fila = $resSelectOrdenSlider->fetch_assoc()) { 
+				$sqlUpdateOrdenSlide = "UPDATE slider SET orden = $orden WHERE idFoto = ".$fila['idFoto'];
+				mysqli_query($mysqli, $sqlUpdateOrdenSlide);
+				$orden++;	
+			}
+		}
+	}
+	
 	$sqlDeleteFoto = "DELETE FROM fotos WHERE id = $id";
 	mysqli_query($mysqli, $sqlDeleteFoto);
-	
 	unlink("../".$path);
 
 	mysqli_commit($mysqli);

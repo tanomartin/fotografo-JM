@@ -16,6 +16,28 @@ try {
 	
 	$idAlbum = $_GET['id'];
 	
+	$sqlSelectSlider = "SELECT s.idFoto FROM fotos f, slider s WHERE f.idAlbum = $idAlbum and f.id = s.idFoto";
+	$resSelectSlider = $mysqli->query($sqlSelectSlider);
+	$rows = $resSelectSlider->num_rows;
+	if ($rows > 0) {
+		while($fila = $resSelectSlider->fetch_assoc()) {
+			$sqlDeleteSlider = "DELETE FROM slider WHERE idFoto = ".$fila['idFoto'];
+			mysqli_query($mysqli, $sqlDeleteSlider);
+		}
+		
+		$sqlSelectOrdenSlider = "SELECT * FROM slider order by orden";
+		$resSelectOrdenSlider = $mysqli->query($sqlSelectOrdenSlider);
+		$rowsUpdate = $resSelectOrdenSlider->num_rows;
+		if ($rowsUpdate > 0) {
+			$orden = 1;
+			while($fila = $resSelectOrdenSlider->fetch_assoc()) {
+				$sqlUpdateOrdenSlide = "UPDATE slider SET orden = $orden WHERE idFoto = ".$fila['idFoto'];
+				mysqli_query($mysqli, $sqlUpdateOrdenSlide);
+				$orden++;
+			}
+		}
+	}
+	
 	$sqlDeleteAlbum = "DELETE FROM albumes WHERE id = $idAlbum";
 	mysqli_query($mysqli, $sqlDeleteAlbum);
 	$sqlDeleteFoto = "DELETE FROM fotos WHERE idAlbum = $idAlbum";
