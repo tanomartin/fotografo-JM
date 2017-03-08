@@ -64,7 +64,7 @@
 	             <?php while($fila = $resBlog->fetch_assoc()) { ?>
 	                      <tr>
 	                          <td><?php echo $fila['titulo']?></td>
-	                          <td><?php echo $fila['texto']?></td>
+	                          <td width="65%"><?php echo $fila['texto']?></td>
 	                          <td>
 	                          	<?php if ( $fila['path'] != NULL) { ?>
 	                          		<img src="../<?php echo $fila['path']?>" class="img-responsive" alt="Cinque Terre" style="width: 100px"/>

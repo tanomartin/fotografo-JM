@@ -7,7 +7,7 @@ try {
 	mysqli_query($mysqli, $sqlInsertBlog);
 	$idBlog = $mysqli->insert_id;
 
-	if (isset($_FILES["file"])) {	
+	if ($_FILES['file']['tmp_name'] != "") {	
 		$file = $_FILES["file"];		
 		$nombre = $idBlog."-".$file["name"];	
 		$destino = "fotos/blog/".$nombre;
