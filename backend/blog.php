@@ -69,7 +69,7 @@
 	                          	<?php if ( $fila['path'] != NULL) { ?>
 	                          		<img src="../<?php echo $fila['path']?>" class="img-responsive" alt="Cinque Terre" style="width: 100px"/>
 	                         	<?php } else { ?>
-	                         		<img src="../fotos/standard/sinfoto.jpg" class="img-responsive" alt="Cinque Terre" style="width: 35px"/>
+	                         		<img src="../fotos/default/sinfoto.jpg" class="img-responsive" alt="Cinque Terre" style="width: 35px"/>
 	                         	<?php } ?>
 	                          </td>
 	                       	  <td><?php if ($fila['activo'] == 1) { ?>

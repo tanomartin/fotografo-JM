@@ -68,7 +68,7 @@
 		                      	<img src="../<?php echo $fila['path']?>" class="img-responsive" alt="Cinque Terre" style="width: 100px"/>
 		                      </div>
 		                <?php } else { ?>
-		                      <img src="../fotos/standard/sinfoto.jpg" class="img-responsive" alt="Cinque Terre" style="width: 100px"/>
+		                      <img src="../fotos/default/sinfoto.jpg" class="img-responsive" alt="Cinque Terre" style="width: 100px"/>
 		                <?php } ?>
                 		<input type="file" id="file" name="file" class="form-control" style="margin-top: 15px"/>
 		            </div>
