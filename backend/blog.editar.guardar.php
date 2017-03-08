@@ -4,7 +4,7 @@ try {
 	mysqli_autocommit($mysqli, FALSE);
 	$idBlog = $_GET['id'];
 	var_dump($_FILES);
-	if (isset($_FILES["file"])) {	
+	if ($_FILES['file']['tmp_name'] != "") {	
 		$sqlBlog = "select path from blog WHERE id = $idBlog";
 		$resBlog = $mysqli->query($sqlBlog);
 		$fila = $resBlog->fetch_assoc();
