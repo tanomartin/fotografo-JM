@@ -1,6 +1,7 @@
 <?php 
 	include('includes/templateEngine.inc.php');
 	include('backend/include/conexion.php');
+	include('includes/consultasNavbar.php');
 	
 	$idAlbum = $_GET['id'];
 	$sqlAlbum = "select * from albumes a where a.id = $idAlbum";
@@ -16,28 +17,16 @@
 		$f++;
 	}
 	
-	$arrayAlbum = array();
-	$sqlAlbumes = "select * from albumes a where activo = 1";
-	$resAlbumes = $mysqli->query($sqlAlbumes);
-	$rows = $resAlbumes->num_rows;
-	if ($rows > 0) {
-		$i=0;
-		while($albumMenu = $resAlbumes->fetch_assoc()) {
-			$arrayAlbum[$i] = $albumMenu;
-			$i++;
-		}
-	}
-	
 	if ($album['tipo'] == 1) {
-		$twig->display('mosaico.html', array("album" => $album, "fotos" => $fotos, "albumes" => $arrayAlbum));
+		$twig->display('mosaico.html', array("album" => $album, "fotos" => $fotos, "albumes" => $arrayAlbum, "activeBlog" => $activBlog));
 	}
 	if ($album['tipo'] == 2) {
-		$twig->display('pinterest.html', array("album" => $album, "fotos" => $fotos, "albumes" => $arrayAlbum));
+		$twig->display('pinterest.html', array("album" => $album, "fotos" => $fotos, "albumes" => $arrayAlbum, "activeBlog" => $activBlog));
 	}
 	if ($album['tipo'] == 3) {
-		$twig->display('sabana.html', array("album" => $album, "fotos" => $fotos, "albumes" => $arrayAlbum));
+		$twig->display('sabana.html', array("album" => $album, "fotos" => $fotos, "albumes" => $arrayAlbum, "activeBlog" => $activBlog));
 	}
 	if ($album['tipo'] == 4) {
-		$twig->display('slide.html', array("album" => $album, "fotos" => $fotos, "albumes" => $arrayAlbum));
+		$twig->display('slide.html', array("album" => $album, "fotos" => $fotos, "albumes" => $arrayAlbum, "activeBlog" => $activBlog));
 	}
 ?>
