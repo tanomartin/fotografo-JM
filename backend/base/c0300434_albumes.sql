@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-02-2017 a las 16:23:27
+-- Tiempo de generación: 08-03-2017 a las 17:09:05
 -- Versión del servidor: 5.6.15-log
 -- Versión de PHP: 5.4.24
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de datos: `fotografojm`
+-- Base de datos: `c0300434_albumes`
 --
 
 -- --------------------------------------------------------
@@ -32,6 +32,21 @@ CREATE TABLE IF NOT EXISTS `albumes` (
   `activo` int(1) NOT NULL,
   `idPortada` int(5) NOT NULL,
   `tipo` int(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `blog`
+--
+
+CREATE TABLE IF NOT EXISTS `blog` (
+  `id` int(6) NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(100) NOT NULL,
+  `texto` text NOT NULL,
+  `path` text,
+  `activo` int(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -83,7 +98,7 @@ INSERT INTO `tipos` (`id`, `descripcion`) VALUES
 (1, 'Tipo Mosaico'),
 (2, 'Tipo Pinterest'),
 (3, 'Imagenes al 100% continuas'),
-(4, 'Slider');
+(4, 'Slide');
 
 -- --------------------------------------------------------
 
