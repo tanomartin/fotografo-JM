@@ -21,7 +21,7 @@ try {
 	$sqlDeleteFoto = "DELETE FROM fotos WHERE idEntidad = $idAlbum";
 	mysqli_query($mysqli, $sqlDeleteFoto);
 	
-	$directorio = "../fotos/$idAlbum";
+	$directorio = "../fotos/album/$idAlbum";
 	deleteDirectory($directorio);
 
 	mysqli_commit($mysqli);
