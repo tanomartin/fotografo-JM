@@ -77,10 +77,10 @@
 	                       	  	<a href="#" data-toggle="modal" data-href="album.delete.php?id=<?php echo $fila['id']?>" data-target="#confirm-delete" title="Eliminar"><span class="glyphicon glyphicon-trash" style="font-size: larger"></span></a>
 	                       	  	<a href="../album.php?id=<?php echo $fila['id']?>" title="Vista Previa" target="_blank"><span class="glyphicon glyphicon-eye-open" style="font-size: larger"></span></a>
 	                       	  	<?php if ($fila['activo'] == 1) { ?>
-	                       	  				<a href="#" data-toggle="modal" data-href="album.cambioestado.php?id=<?php echo $fila['id']?>&estado=0" data-target="#confirm-desactivar" title="desactivar"><span class="glyphicon glyphicon-arrow-down" title="Desactivar" style="color: red; font-size: larger"></span></a>
+	                       	  			<a href="#" data-toggle="modal" data-href="album.cambioestado.php?id=<?php echo $fila['id']?>&estado=0" data-target="#confirm-desactivar" title="desactivar"><span class="glyphicon glyphicon-arrow-down" title="Desactivar" style="color: red; font-size: larger"></span></a>
 	                       	  	<?php } else { ?>
-	                       	  		 		<a href="#" data-toggle="modal" data-href="album.cambioestado.php?id=<?php echo $fila['id']?>&estado=1" data-target="#confirm-activar" title="Activar"><span class="glyphicon glyphicon-arrow-up" style="color: green; font-size: larger"></span></a>
-	                       	  	   <?php } ?>
+	                       	  		 	<a href="#" data-toggle="modal" data-href="album.cambioestado.php?id=<?php echo $fila['id']?>&estado=1" data-target="#confirm-activar" title="Activar"><span class="glyphicon glyphicon-arrow-up" style="color: green; font-size: larger"></span></a>
+	                       	  	<?php } ?>
 	                       	  </td>
 	                       </tr>
                   <?php } ?>

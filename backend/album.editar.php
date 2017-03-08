@@ -42,7 +42,7 @@
 	$resultado = $mysqli->query($sqlAlbum);
 	$fila = $resultado->fetch_assoc();
 	
-	$sqlFotos = "select * from fotos a where a.idAlbum = $idAlbum order by orden";
+	$sqlFotos = "select * from fotos a where a.idEntidad = $idAlbum order by orden";
 	$resFotos = $mysqli->query($sqlFotos);
 	$canFotos = $resFotos->num_rows;
 	

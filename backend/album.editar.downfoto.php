@@ -8,13 +8,13 @@ try {
 	$ordenPosterior = $orden + 1;
 	$idAlbum = $_GET['idAlbum'];
 	
-	$sqlDownFirst = "UPDATE fotos SET orden = -1 WHERE idAlbum = $idAlbum and orden = $ordenPosterior";
+	$sqlDownFirst = "UPDATE fotos SET orden = -1 WHERE idEntidad = $idAlbum and orden = $ordenPosterior";
 	echo $sqlDownFirst."<br>";
 	mysqli_query($mysqli, $sqlDownFirst);
-	$sqlUpFoto = "UPDATE fotos SET orden = $ordenPosterior WHERE idAlbum = $idAlbum and orden = $orden";
+	$sqlUpFoto = "UPDATE fotos SET orden = $ordenPosterior WHERE idEntidad = $idAlbum and orden = $orden";
 	echo $sqlUpFoto."<br>";
 	mysqli_query($mysqli, $sqlUpFoto);
-	$sqlDownLast = "UPDATE fotos SET orden = $orden WHERE idAlbum = $idAlbum and orden = -1";
+	$sqlDownLast = "UPDATE fotos SET orden = $orden WHERE idEntidad = $idAlbum and orden = -1";
 	echo $sqlDownLast."<br>";
 	mysqli_query($mysqli, $sqlDownLast);
 
