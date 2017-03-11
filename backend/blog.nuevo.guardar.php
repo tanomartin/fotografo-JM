@@ -2,8 +2,9 @@
 
 try {
 	mysqli_autocommit($mysqli, FALSE);
+	$date = date("Y-m-d");
 	
-	$sqlInsertBlog = "INSERT INTO blog VALUES(DEFAULT, '".$_POST['titulo']."','".$_POST['texto']."',NULL,0)";
+	$sqlInsertBlog = "INSERT INTO blog VALUES(DEFAULT, '".$_POST['titulo']."','".$_POST['texto']."',NULL,'$date',0)";
 	mysqli_query($mysqli, $sqlInsertBlog);
 	$idBlog = $mysqli->insert_id;
 

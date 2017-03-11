@@ -48,7 +48,7 @@
                 </div>
             </div>
 			<?php
-            	$sqlBlog = "select * from blog order by id DESC";
+            	$sqlBlog = "select b.*, DATE_FORMAT(b.fecha,'%m-%d-%Y') as fecha from blog b order by fecha DESC";
 				$resBlog = $mysqli->query($sqlBlog);
 				$rowBlog = $resBlog->num_rows;
 				if ($rowBlog > 0) { ?>
@@ -57,6 +57,7 @@
 		            		<th>Titulo</th>
 		            		<th>Texto</th>
 		            		<th>Foto</th>
+		            		<th>Fecha</th>
 		            		<th>Activa</th>
 		            		<th>Acciones</th>
 		            	</thead>
@@ -64,7 +65,7 @@
 	             <?php while($fila = $resBlog->fetch_assoc()) { ?>
 	                      <tr>
 	                          <td><?php echo $fila['titulo']?></td>
-	                          <td width="65%"><?php echo $fila['texto']?></td>
+	                          <td width="60%"><?php echo $fila['texto']?></td>
 	                          <td>
 	                          	<?php if ( $fila['path'] != NULL) { ?>
 	                          		<img src="../<?php echo $fila['path']?>" class="img-responsive" alt="Cinque Terre" style="width: 100px"/>
@@ -72,6 +73,7 @@
 	                         		<img src="../fotos/default/sinfoto.jpg" class="img-responsive" alt="Cinque Terre" style="width: 35px"/>
 	                         	<?php } ?>
 	                          </td>
+	                          <td><?php echo $fila['fecha']?></td>
 	                       	  <td><?php if ($fila['activo'] == 1) { ?>
 	                       	  				<span class="glyphicon glyphicon-ok" title="Activo" style="color: green; font-size: larger"></span>
 	                       	  	  <?php } else { ?>
