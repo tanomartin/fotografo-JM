@@ -4,7 +4,7 @@
 // Twig
 $root = '';
 // Incluimos Twig Auto Loader
-require($root . 'lib/php/Twig/Autoloader.php');
+require($root . 'includes/php/Twig/Autoloader.php');
 Twig_Autoloader::register();
 
 // Definimos la ruta donde estarán nuestros templates
