@@ -39,27 +39,26 @@
 	<div class="container">
 		{% include 'navbar.html' %}
 		<section class="tittle-album blog">
-			<div class="row">
-				<div class="col-md-12 desc">
-					<div class="blog-w">
-						<h2 class="title-blog">Titulo Entrada 1</h2>
-						<p class="fecha-blog">14/04/02</p>
-						<p>Texto lorem impsum lorem impsum lorem impsum loremimpsum loremimpsum lorem impsum lorem lorem impsum lorem lorem impsum lorem lorem impsum lorem</p>
-						<div>
-							<img src="fotos/default/default-img.jpg">
+			{% for blog in entradas %}
+				<div class="row">
+					<div class="col-md-12 desc">
+						<div class="blog-w">
+							<h2 class="title-blog">{{blog.titulo}}</h2>
+							<p class="fecha-blog">{{blog.fecha}}</p>
+							<p>{{blog.texto}}</p>
+							{% if blog.path != NULL %}
+								<div>
+									<img src="{{blog.path}}">
+								</div>
+							{% endif %}
 						</div>
-					</div>
-						<div class="line-blog">
-						</div>
-
-				</div>
-
-
-
-
-			</div>
-		</section>
+						<div class="line-blog"></div>
 	
+					</div>
+				</div>
+			{% endfor %}
+		</section>
+
 	</div>
 	<!--DIV CONTAINER !-->
 
