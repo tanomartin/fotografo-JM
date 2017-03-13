@@ -82,7 +82,7 @@ a {
 }
 	
  .blog-w{
- 	width:700px;
+ 	padding:0px 10%;
  	margin:0 auto;
 
  }
@@ -100,11 +100,13 @@ a {
 
  @media screen and (max-width:691px){
 
- 	.blog-w{
- 		width:100%;
 
- 	}
+ .blog-w{
+ 	padding:0px 2%;
+ 	margin:0 auto;
 
+ }
+/*
  	 .title-blog{
  	 	margin: 65px 0 10px 15px!important;
  	 }
@@ -112,6 +114,6 @@ a {
 	.desc p, .desc {
     margin: 0px 0 10px 15px;
 	}
-
+*/
 
  }
