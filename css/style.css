@@ -94,8 +94,22 @@ a {
  }
 
  .blog{
- 	padding-top:80px;
+ 	padding-top:10px;
  }
+
+.col-lg-6 form{
+	padding:0px 15px!important;
+}
+
+.sub-title{
+	    font-weight: 700;
+	    margin-bottom: 5px!important;
+
+}
+
+.formacion-text{
+	margin-bottom:10px!important;
+}
 
 
  @media screen and (max-width:691px){
@@ -106,6 +120,8 @@ a {
  	margin:0 auto;
 
  }
+
+
 /*
  	 .title-blog{
  	 	margin: 65px 0 10px 15px!important;

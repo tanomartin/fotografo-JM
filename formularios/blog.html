@@ -18,13 +18,22 @@
 <link href="css/style.css" rel="stylesheet"/>
 
 </head>
-
 <body>
-	<div class="container">
-		{% include 'navbar.html' %}
-		<section class="tittle-album blog">
-			{% for blog in entradas %}
+		<div class="container">
+			{% include 'navbar.html' %}
+			<section class="tittle-album">
 				<div class="row">
+					<div class="col-lg-12">
+						<h2>Blog</h2>
+					</div>
+				</div>
+			</section>
+
+		<section class="tittle-album blog">
+
+
+				<div class="row">
+			{% for blog in entradas %}
 					<div class="col-md-12 desc">
 						<div class="blog-w">
 							<h2 class="title-blog">{{blog.titulo}}</h2>
@@ -38,9 +47,11 @@
 						</div>
 						<hr>
 					</div>
-				</div>
 			{% endfor %}
+				</div>
+
 		</section>
+	
 
 
 	</div>

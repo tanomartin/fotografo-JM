@@ -10,7 +10,6 @@
 <meta name="author" content="">
 
 <title>José Moroni</title>
-
 <link href="img/favicon.ico" rel="shortcut icon"/>
 <link href="css/bootstrap.min.css" rel="stylesheet"/>
 <link href="css/bootstrap.css" rel="stylesheet"/>
@@ -37,9 +36,8 @@
 
 		<div class="row">
 			{% for foto in fotos %}
-			<div class="col-xs-12 col-md-6 col-lg-3 sr-icons">
-				<a class="fancybox thumbnail" href="{{foto.path}}"><img
-					src="{{foto.path}}"></a>
+			<div class="col-lg-2 col-md-6 col-xs-12 sr-icons">
+				<a class="fancybox thumbnail" href="{{foto.path}}"><img src="{{foto.path}}"></a>
 			</div>
 			{% endfor %}
 		</div>
