@@ -111,6 +111,77 @@ a {
 	margin-bottom:10px!important;
 }
 
+.foot p{
+	font-size:12px;
+	margin-top:60px;
+	margin-bottom:100px;
+	display:inline-block;
+}
+
+.redes{
+	float:right;
+	font-size:12px;
+	margin-top:60px;
+	margin-bottom:100px;
+}
+
+.foot a{
+	text-decoration:none;
+	color:#777;
+
+}
+
+.foot a:hover{
+	text-decoration:none;
+	color:#525252;
+	
+}
+
+
+/* Tipo pinterest */
+
+* { box-sizing: border-box; }
+
+/* force scrollbar */
+html { overflow-y: scroll; }
+
+body {
+  font-family: sans-serif;
+}
+
+/* ---- isotope ---- */
+
+.grid {
+  background: #FFF;
+
+}
+
+/* clear fix */
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ---- .grid-item ---- */
+
+.grid-sizer,
+.grid-item {
+  width: 33.333%;
+  padding:0px
+}
+
+.grid-item {
+  float: left;
+}
+
+.grid-item img {
+  display: block;
+  max-width: 100%;
+}
+
+/* FIN TIPO PINTEREST */
+
 
  @media screen and (max-width:691px){
 

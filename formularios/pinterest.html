@@ -39,6 +39,8 @@
 		</section>
 		<!--FIN IMG HOME !-->
 
+
+<!--
 		<div>
 			<div class='thumbsContainer'>
 				<a class="fancybox thumbnail" href="img/pinterest1.jpg" border='0'>
@@ -114,9 +116,25 @@
 
 
 		</div>
+!-->
 
 
 
+<div class="grid">
+  <div class="grid-sizer"></div>
+	{% for foto in fotos %}
+		  <div class="grid-item">
+		<a class="fancybox thumbnail" href="{{foto.path}}" style="margin-bottom: 0px;"><img src="{{foto.path}}"></a>
+		  </div>
+  	{% endfor %}
+
+</div>
+
+
+		<div class="foot">
+			<p>© José Moroni 2017 / Design by <a href="http://www.martinzuccotti.com.ar" target="_blank"> MZ</a></p>
+			<p class="redes"><a href="#" target="_blank">Instagram </a>/ <a href="https://www.tumblr.com/blog/jose-moroni" target="_blank">Tumblr</a></p>
+		</div>
 
 
 	</div>
@@ -130,11 +148,30 @@
 	<script src="js/magnific-popup/jquery.magnific-popup.min.js"></script>
 	<script src="js/creative.min.js"></script>
 	<script src="fancybox/source/jquery.fancybox.pack.js?v=2.1.5" type="text/javascript" ></script>
+	<script src="js/isotope.pkgd.min.js"></script>
 
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$(".fancybox").fancybox();
 		});
+	</script>
+
+
+	<script type="text/javascript">
+		// external js: isotope.pkgd.js, imagesloaded.pkgd.js
+
+		// init Isotope
+		var $grid = $('.grid').isotope({
+		  itemSelector: '.grid-item',
+		  percentPosition: true,
+		  masonry: {
+		    columnWidth: '.grid-sizer'
+		  }
+		});
+		// layout Isotope after each image loads
+		$grid.imagesLoaded().progress( function() {
+		  $grid.isotope('layout');
+		});  
 	</script>
 
 </body>
