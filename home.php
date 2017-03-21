@@ -19,5 +19,5 @@
 		$claves_aleatorias = 0;
  	}
  	
-	$twig->display('index.html', array("foto" => $arraySlider[$claves_aleatorias], "albumes" => $arrayAlbum, "activeBlog" => $activBlog));
+	$twig->display('home.html', array("foto" => $arraySlider[$claves_aleatorias], "albumes" => $arrayAlbum, "activeBlog" => $activBlog));
 ?>
