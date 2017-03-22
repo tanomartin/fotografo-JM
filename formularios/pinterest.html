@@ -38,105 +38,18 @@
 			</div>
 		</section>
 		<!--FIN IMG HOME !-->
-
-
-<!--
-		<div>
-			<div class='thumbsContainer'>
-				<a class="fancybox thumbnail" href="img/pinterest1.jpg" border='0'>
-					<div class='coverContainer caption sr-icons'>
-						<img src='img/pinterest1.jpg' style='width: 265px' />
-					</div>
-				</a>
-			</div>
-
-			<div class='thumbsContainer'>
-				<a class="fancybox thumbnail" href="img/pinterest2.jpg" border='0'>
-					<div class='coverContainer caption sr-icons'>
-						<img src='img/pinterest2.jpg' style='width: 599px' />
-					</div>
-				</a>
-			</div>
-
-			<div class='thumbsContainer'>
-				<a class="fancybox thumbnail" href="img/pinterest3.jpg" border='0'>
-					<div class='coverContainer caption sr-icons'>
-						<img src='img/pinterest3.jpg' style='width: 320px' />
-					</div>
-				</a>
-			</div>
-
-			<div class='thumbsContainer'>
-				<a class="fancybox thumbnail" href="img/pinterest4.jpg" border='0'>
-					<div class='coverContainer caption sr-icons'>
-						<img src='img/pinterest4.jpg' style='width: 320px' />
-					</div>
-				</a>
-			</div>
-
-			<div class='thumbsContainer'>
-				<a class="fancybox thumbnail" href="img/pinterest5.jpg" border='0'>
-					<div class='coverContainer caption sr-icons'>
-						<img src='img/pinterest5.jpg' style='width: 290px' />
-					</div>
-				</a>
-			</div>
-
-			<div class='thumbsContainer'>
-				<a class="fancybox thumbnail" href="img/pinterest6.jpg" border='0'>
-					<div class='coverContainer caption sr-icons'>
-						<img src='img/pinterest6.jpg' style='width: 400px' />
-					</div>
-				</a>
-			</div>
-
-			<div class='thumbsContainer'>
-				<a class="fancybox thumbnail" href="img/pinterest7.jpg" border='0'>
-					<div class='coverContainer caption sr-icons'>
-						<img src='img/pinterest7.jpg' style='width: 265px' />
-					</div>
-				</a>
-			</div>
-
-			<div class='thumbsContainer'>
-				<a class="fancybox thumbnail" href="img/pinterest8.jpg" border='0'>
-					<div class='coverContainer caption sr-icons'>
-						<img src='img/pinterest8.jpg' style='width: 265px' />
-					</div>
-				</a>
-			</div>
-
-			<div class='thumbsContainer'>
-				<a class="fancybox thumbnail" href="img/pinterest9.jpg" border='0'>
-					<div class='coverContainer caption sr-icons'>
-						<img src='img/pinterest9.jpg' style='width: 565px' />
-					</div>
-				</a>
-			</div>
-
-
+		
+		<div class="grid">
+		  <div class="grid-sizer"></div>
+			{% for foto in fotos %}
+				  <div class="grid-item">
+				<a class="fancybox thumbnail" href="{{foto.path}}" style="margin-bottom: 0px;"><img src="{{foto.path}}"></a>
+				  </div>
+		  	{% endfor %}
+		
 		</div>
-!-->
-
-
-
-<div class="grid">
-  <div class="grid-sizer"></div>
-	{% for foto in fotos %}
-		  <div class="grid-item">
-		<a class="fancybox thumbnail" href="{{foto.path}}" style="margin-bottom: 0px;"><img src="{{foto.path}}"></a>
-		  </div>
-  	{% endfor %}
-
-</div>
-
-
-		<div class="foot">
-			<p>© José Moroni 2017 / Design by <a href="http://www.martinzuccotti.com.ar" target="_blank"> MZ</a></p>
-			<p class="redes"><a href="#" target="_blank">Instagram </a>/ <a href="https://www.tumblr.com/blog/jose-moroni" target="_blank">Tumblr</a></p>
-		</div>
-
-
+		
+		{% include 'navbar.html' %}
 	</div>
 	<!--DIV CONTAINER !-->
 
