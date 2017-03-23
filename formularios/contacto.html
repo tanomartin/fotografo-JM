@@ -9,23 +9,19 @@
 
 <title>José Moroni</title>
 
-<link href="img/favicon.ico" rel="shortcut icon"/>
-<link href="css/bootstrap.min.css" rel="stylesheet"/>
-<link href="css/bootstrap.css" rel="stylesheet"/>
-<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-<link href="fonts/SourceSans.woff2" rel="stylesheet"/>
-<link href="js/magnific-popup/magnific-popup.css" rel="stylesheet"/>
-<link href="css/style.css" rel="stylesheet"/>
+<link href="img/favicon.ico" rel="shortcut icon" />
+<link href="css/bootstrap.min.css" rel="stylesheet" />
+<link href="css/bootstrap.css" rel="stylesheet" />
+<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="fonts/SourceSans.woff2" rel="stylesheet" />
+<link href="js/magnific-popup/magnific-popup.css" rel="stylesheet" />
+<link href="css/style.css" rel="stylesheet" />
 
 </head>
 
 <body>
-
-
-
-
 	<div class="container">
-		{% include 'navbar.html' %}		
+		{% include 'navbar.html' %}
 		<!--IMG HOME !-->
 		<section class="tittle-album">
 			<div class="row">
@@ -35,48 +31,61 @@
 			</div>
 		</section>
 
-
-
-
-			<div class="row">
-				<div class="col-lg-6">
-					<img class="img-responsive" style="margin-bottom:100px;" src="fotos/default/fotografo.jpg">
-				</div>
-				<div class="col-lg-6">
-					<form>
-						<input type="text" class="form-control" placeholder="Nombre" id="name" required data-validation-required-message="Por favor dejanos tu nombre.">
-
-
-						<input type="text" class="form-control" placeholder="Celular" id="name" required data-validation-required-message="Por favor dejanos tu nombre.">
-
-
-						<textarea class="form-control" placeholder="Mensaje" id="message" required data-validation-required-message="Por favor dejanos tu mensaje." style="height: 200px;"></textarea>
-						<div style="text-align:center;">
-							<button type="submit" class="btn btn-default" style="width: 200px; margin-top: 50px; height: 50px;margin-bottom:50px;">Enviar</button>
-						</div>
-					</form>
-				</div>
+		<div class="row">
+			<div class="col-lg-6">
+				<img class="img-responsive" style="margin-bottom: 100px;" src="fotos/default/fotografo.jpg">
 			</div>
-
-			<div class="col-lg-12 text-center">
-				
+			<div class="col-lg-6">	
+				<form method="post" id="formularioEnvio" onsubmit="return envio();">
+					<div id="msgerror" style="display: none; text-align: center" class="alert alert-danger" role="alert">No se pudo enviar el correo <br>Por favor intentelo mas tarde</div>
+					<div id="msgsuccess" style="display: none; text-align: center" class="alert alert-success" role="alert">Su mensaje ha sido enviado <br> Se le respondera a la brevedad</div>
+					
+					<input type="text" class="form-control" placeholder="Nombre" name="nombre" id="nombre" required data-validation-required-message="Por favor dejanos tu nombre.">
+					<input type="email" class="form-control" placeholder="Email" name="email" id="email"  required data-validation-required-message="Por favor dejanos tu nombre.">
+					<input type="number" class="form-control" placeholder="Celular" name="telefono" id="telefono" required data-validation-required-message="Por favor dejanos tu nombre.">
+					<textarea class="form-control" placeholder="Mensaje" name="mensaje" id="mensaje" required data-validation-required-message="Por favor dejanos tu mensaje." style="height: 200px;"></textarea>
+					
+					<div style="text-align: center;">			
+						<button type="submit" id="buttonSend" class="btn btn-default" style="width: 200px; margin-top: 50px; height: 50px; margin-bottom: 50px;">Enviar</button>
+					</div>
+				</form>
 			</div>
-
-		{% include 'footer.html' %}
-
 		</div>
-
-
-
-
-
+		{% include 'footer.html' %}
+	</div>
+	
 	<script src="js/jquery/jquery.min.js"></script>
 	<script src="js/bootstrap/bootstrap.min.js"></script>
 	<script src="js/jquery.easing.min.js"></script>
 	<script src="js/magnific-popup/scrollreveal/scrollreveal.min.js"></script>
 	<script src="js/magnific-popup/jquery.magnific-popup.min.js"></script>
 	<script src="js/creative.min.js"></script>
-
+	<script>
+		function envio() {
+			$("#buttonSend").attr('disabled','disabled');
+			$('html,body').css('cursor','progress');
+			var nombre = $("#nombre").val();
+	        var email = $("#email").val();
+	        var telefono = $("#telefono").val();
+	        var mensaje = $("#mensaje").val();
+	        $.ajax({
+	            type: "POST",
+	            url: "includes/sendmail.php",
+	            data: {nombre:nombre, email: email, telefono: telefono, mensaje: mensaje}
+	        }).done(function(respuesta){
+	        	if (respuesta) {
+	        		$("#msgsuccess").css("display", "block");
+	        		document.getElementById("formularioEnvio").reset()
+	        	} else {
+	        		$("#msgerror").css("display", "block");
+	        	}
+	        	$("#buttonSend").removeAttr('disabled');
+	        	$("body").css("cursor", "default");
+	        });
+	        return false;
+		}
+	
+	</script>
+	
 </body>
-
 </html>
