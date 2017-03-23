@@ -1,5 +1,6 @@
 <?php 
 	include_once('includes/templateEngine.inc.php');
+	require_once('includes/MobileDetect/Mobile_Detect.php');
 	
 	function detect() {
 		$browser=array("SAFARI","CHROME","IE","OPR","MOZILLA","NETSCAPE","FIREFOX","TRIDENT");
@@ -32,23 +33,26 @@
 		return $info;
 	}
 	
-	$info=detect();
-	
-	$videoPath = "fotos/default/";
-	$browser = $info["browser"]; 
-	if(strpos($browser, 'IE') !== FALSE ) {
-		$videoPath .= "video-home.wmv";
-	}
-	if(strpos($browser, 'SAFARI') !== FALSE) {
-		$videoPath .= "video-home.ogg";
-	}
-	if(strpos($browser, 'OPR') !== FALSE || strpos($browser, 'TRIDENT') !== FALSE || strpos($browser, 'FIREFOX') !== FALSE || strpos($browser, 'CHROME') !== FALSE || strpos($browser, 'FIREFOX') !== FALSE) {
-		$videoPath .= "video-home.mp4";
-	}
-	if ($videoPath == "fotos/default/") {
-		header('Location: home.php');	
+	$detect = new Mobile_Detect;
+	if ($detect->isMobile() || $detect->isTablet()) {
+		header('Location: home.php');
 	} else {
-		$twig->display('index.html', array("videoPath" => $videoPath));
+		$info=detect();
+		$videoPath = "fotos/default/";
+		$browser = $info["browser"]; 
+		if(strpos($browser, 'IE') !== FALSE ) {
+			$videoPath .= "video-home.wmv";
+		}
+		if(strpos($browser, 'SAFARI') !== FALSE) {
+			$videoPath .= "video-home.ogg";
+		}
+		if(strpos($browser, 'OPR') !== FALSE || strpos($browser, 'TRIDENT') !== FALSE || strpos($browser, 'FIREFOX') !== FALSE || strpos($browser, 'CHROME') !== FALSE || strpos($browser, 'FIREFOX') !== FALSE) {
+			$videoPath .= "video-home.mp4";
+		}
+		if ($videoPath == "fotos/default/") {
+			header('Location: home.php');	
+		} else {
+			$twig->display('index.html', array("videoPath" => $videoPath));
+		}
 	}
-	
 ?>
