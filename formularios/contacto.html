@@ -73,7 +73,7 @@
 	            url: "includes/sendmail.php",
 	            data: {nombre:nombre, email: email, telefono: telefono, mensaje: mensaje}
 	        }).done(function(respuesta){
-	        	if (respuesta) {
+	        	if (respuesta == 1) {
 	        		$("#msgsuccess").css("display", "block");
 	        		document.getElementById("formularioEnvio").reset()
 	        	} else {
