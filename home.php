@@ -1,7 +1,7 @@
 <?php 
-	include('includes/templateEngine.inc.php');
-	include('backend/include/conexion.php');
-	include('includes/consultasNavbar.php');
+	include_once('includes/templateEngine.inc.php');
+	include_once('backend/include/conexion.php');
+	include_once('includes/consultasNavbar.php');
 	
 	$arraySlider = array();
 	$sqlSlider = "SELECT s.*, f.path, a.titulo, a.activo FROM slider s, fotos f, albumes a WHERE s.idFoto = f.id and f.idAlbum = a.id order by s.orden";

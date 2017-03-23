@@ -1,7 +1,7 @@
 <?php 
-	include('includes/templateEngine.inc.php');
-	include('backend/include/conexion.php');
-	include('includes/consultasNavbar.php');
+	include_once('includes/templateEngine.inc.php');
+	include_once('backend/include/conexion.php');
+	include_once('includes/consultasNavbar.php');
 	
 	$idAlbum = $_GET['id'];
 	$sqlAlbum = "select * from albumes a where a.id = $idAlbum";

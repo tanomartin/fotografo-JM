@@ -1,7 +1,7 @@
 <?php 
-	include('includes/templateEngine.inc.php');
-	include('backend/include/conexion.php');
-	include('includes/consultasNavbar.php');
+	include_once('includes/templateEngine.inc.php');
+	include_once('backend/include/conexion.php');
+	include_once('includes/consultasNavbar.php');
 	
 	$arrayEntradas = array();
 	$sqlBlog = "select b.*, DATE_FORMAT(b.fecha,'%m-%d-%Y') as fecha from blog b where b.activo = 1 order by fecha DESC, id DESC";

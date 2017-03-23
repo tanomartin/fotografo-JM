@@ -1,5 +1,5 @@
 <?php 
-	include('includes/templateEngine.inc.php');
+	include_once('includes/templateEngine.inc.php');
 	
 	function detect() {
 		$browser=array("SAFARI","CHROME","IE","OPR","MOZILLA","NETSCAPE","FIREFOX","TRIDENT");
