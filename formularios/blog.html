@@ -9,63 +9,64 @@
 
 <title>José Moroni</title>
 
-<link href="css/bootstrap.min.css" rel="stylesheet"/>
-<link href="css/bootstrap.css" rel="stylesheet"/>
-<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-<link href="fonts/SourceSans.woff2" rel="stylesheet"/>
-<link href="js/magnific-popup/magnific-popup.css" rel="stylesheet"/>
-<link href="css/style.css" rel="stylesheet"/>
+<link href="css/bootstrap.min.css" rel="stylesheet" />
+<link href="css/bootstrap.css" rel="stylesheet" />
+<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="fonts/SourceSans.woff2" rel="stylesheet" />
+<link href="js/magnific-popup/magnific-popup.css" rel="stylesheet" />
+<link href="css/style.css" rel="stylesheet" />
 <link href="css/yamm.css" rel="stylesheet">
-<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"/>
+<link rel="stylesheet"
+	href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
 
 <script src="js/jquery/jquery.min.js"></script>
 <script src="js/bootstrap/bootstrap.min.js"></script>
-<script src="js/jquery.easing.min.js"></script>
-<script src="js/magnific-popup/scrollreveal/scrollreveal.min.js"></script>
-<script src="js/magnific-popup/jquery.magnific-popup.min.js"></script>
-<script src="js/creative.min.js"></script>
-<script src="js/analyticstracking.js" type="text/javascript" ></script>
+
 
 </head>
 <body>
-		<div class="container">
-			{% include 'navbar.html' %}
-			<section class="tittle-album">
-				<div class="row">
-					<div class="col-lg-12">
-						<h2>Blog</h2>
-					</div>
+	<div class="container">
+		{% include 'navbar.html' %}
+		<section class="tittle-album">
+			<div class="row">
+				<div class="col-lg-12">
+					<h2>Blog</h2>
 				</div>
-			</section>
+			</div>
+		</section>
 
 		<section class="tittle-album blog">
 
 
-				<div class="row">
-			{% for blog in entradas %}
-					<div class="col-md-12 desc">
-						<div class="blog-w">
-							<h2 class="title-blog">{{blog.titulo}}</h2>
-							<p class="fecha-blog">{{blog.fecha}}</p>
-							<p>{{blog.texto}}</p>
-							{% if blog.path != NULL %}
-								<div>
-									<img class="img-responsive" src="{{blog.path}}">
-								</div>
-							{% endif %}
+			<div class="row">
+				{% for blog in entradas %}
+				<div class="col-md-12 desc">
+					<div class="blog-w">
+						<h2 class="title-blog">{{blog.titulo}}</h2>
+						<p class="fecha-blog">{{blog.fecha}}</p>
+						<p>{{blog.texto}}</p>
+						{% if blog.path != NULL %}
+						<div>
+							<img class="img-responsive" src="{{blog.path}}">
 						</div>
-						<hr>
+						{% endif %}
 					</div>
-			{% endfor %}
+					<hr>
 				</div>
+				{% endfor %}
+			</div>
 
 		</section>
-	
+
 		{% include 'footer.html' %}
 
 	</div>
 	<!--DIV CONTAINER !-->
-
+	<script src="js/jquery.easing.min.js"></script>
+	<script src="js/magnific-popup/scrollreveal/scrollreveal.min.js"></script>
+	<script src="js/magnific-popup/jquery.magnific-popup.min.js"></script>
+	<script src="js/creative.min.js"></script>
+	<script src="js/analyticstracking.js" type="text/javascript"></script>
 </body>
 
 </html>

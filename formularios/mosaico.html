@@ -10,37 +10,28 @@
 <meta name="author" content="">
 
 <title>José Moroni</title>
-<link href="css/bootstrap.min.css" rel="stylesheet"/>
-<link href="css/bootstrap.css" rel="stylesheet"/>
-<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-<link href="css/style.css" rel="stylesheet"/>
-<link href="fonts/SourceSans.woff2" rel="stylesheet"/>
-<link href="js/magnific-popup/magnific-popup.css" rel="stylesheet"/>
-<link href="fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" media="screen" />
+<link href="css/bootstrap.min.css" rel="stylesheet" />
+<link href="css/bootstrap.css" rel="stylesheet" />
+<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" />
+<link href="fonts/SourceSans.woff2" rel="stylesheet" />
+<link href="js/magnific-popup/magnific-popup.css" rel="stylesheet" />
+<link href="fancybox/source/jquery.fancybox.css?v=2.1.5"
+	rel="stylesheet" type="text/css" media="screen" />
 <link href="css/yamm.css" rel="stylesheet">
-<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"/>
+<link rel="stylesheet"
+	href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
 
 <script src="js/jquery/jquery-latest.min.js" type="text/javascript"></script>
 <script src="js/jquery/jquery.min.js"></script>
 <script src="js/bootstrap/bootstrap.min.js"></script>
-<script src="js/jquery.easing.min.js"></script>
-<script src="js/magnific-popup/scrollreveal/scrollreveal.min.js"></script>
-<script src="js/magnific-popup/jquery.magnific-popup.min.js"></script>
-<script src="js/creative.min.js"></script>
-<script src="fancybox/source/jquery.fancybox.pack.js?v=2.1.5" type="text/javascript" ></script>
-<script src="js/analyticstracking.js" type="text/javascript" ></script>
 
-<script type="text/javascript">
-	$(document).ready(function() {
-		$(".fancybox").fancybox();
-	});
-</script>
 
 </head>
 
 <body>
 	<div class="container">
-		{% include 'navbar.html' %}		
+		{% include 'navbar.html' %}
 		<!--IMG HOME !-->
 		<section class="tittle-album">
 			<div class="row">
@@ -54,7 +45,8 @@
 		<div class="row">
 			{% for foto in fotos %}
 			<div class="col-lg-3 col-md-6 col-xs-12 sr-icons">
-				<a class="fancybox thumbnail mosaico-img2" href="{{foto.path}}"><img src="{{foto.path}}"></a>
+				<a class="fancybox thumbnail mosaico-img2" href="{{foto.path}}"><img
+					src="{{foto.path}}"></a>
 			</div>
 			{% endfor %}
 		</div>
@@ -63,6 +55,19 @@
 
 	</div>
 	<!--DIV CONTAINER !-->
+	<script src="js/jquery.easing.min.js"></script>
+	<script src="js/magnific-popup/scrollreveal/scrollreveal.min.js"></script>
+	<script src="js/magnific-popup/jquery.magnific-popup.min.js"></script>
+	<script src="js/creative.min.js"></script>
+	<script src="fancybox/source/jquery.fancybox.pack.js?v=2.1.5"
+		type="text/javascript"></script>
+	<script src="js/analyticstracking.js" type="text/javascript"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".fancybox").fancybox();
+		});
+	</script>
 </body>
 
 </html>
