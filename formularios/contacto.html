@@ -16,6 +16,8 @@
 <link href="fonts/SourceSans.woff2" rel="stylesheet" />
 <link href="js/magnific-popup/magnific-popup.css" rel="stylesheet" />
 <link href="css/style.css" rel="stylesheet" />
+<link href="css/yamm.css" rel="stylesheet">
+<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"/>
 
 </head>
 
@@ -43,7 +45,7 @@
 					<input type="text" class="form-control" placeholder="Nombre" name="nombre" id="nombre" required data-validation-required-message="Por favor dejanos tu nombre.">
 					<input type="email" class="form-control" placeholder="Email" name="email" id="email"  required data-validation-required-message="Por favor dejanos tu nombre.">
 					<input type="number" class="form-control" placeholder="Celular" name="telefono" id="telefono" required data-validation-required-message="Por favor dejanos tu nombre.">
-					<textarea class="form-control" placeholder="Mensaje" name="mensaje" id="mensaje" required data-validation-required-message="Por favor dejanos tu mensaje." style="height: 200px;"></textarea>
+					<textarea class="form-control" placeholder="Mensaje" name="mensaje" id="mensaje" required data-validation-required-message="Por favor dejanos tu mensaje." style="height: 150px;"></textarea>
 					
 					<div style="text-align: center;">			
 						<button type="submit" id="buttonSend" class="btn btn-default" style="width: 200px; margin-top: 50px; height: 50px; margin-bottom: 50px;">Enviar</button>
@@ -86,6 +88,15 @@
 	        return false;
 		}
 	
+	</script>
+	
+	<script>
+    $(function() {
+        $(document).on('click', '.yamm .dropdown-menu', function(e) {
+            e.stopPropagation()
+        })
+    })
+    
 	</script>
 	
 </body>

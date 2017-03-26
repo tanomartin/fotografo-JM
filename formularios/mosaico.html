@@ -18,6 +18,9 @@
 <link href="fonts/SourceSans.woff2" rel="stylesheet"/>
 <link href="js/magnific-popup/magnific-popup.css" rel="stylesheet"/>
 <link href="fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" media="screen" />
+<link href="css/yamm.css" rel="stylesheet">
+<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"/>
+
 
 </head>
 
@@ -36,8 +39,8 @@
 
 		<div class="row">
 			{% for foto in fotos %}
-			<div class="col-lg-2 col-md-6 col-xs-12 sr-icons">
-				<a class="fancybox thumbnail" href="{{foto.path}}"><img src="{{foto.path}}"></a>
+			<div class="col-lg-3 col-md-6 col-xs-12 sr-icons">
+				<a class="fancybox thumbnail mosaico-img2" href="{{foto.path}}"><img src="{{foto.path}}"></a>
 			</div>
 			{% endfor %}
 		</div>
@@ -61,6 +64,15 @@
 		$(document).ready(function() {
 			$(".fancybox").fancybox();
 		});
+	</script>
+
+	<script>
+    $(function() {
+        $(document).on('click', '.yamm .dropdown-menu', function(e) {
+            e.stopPropagation()
+        })
+    })
+    
 	</script>
 
 </body>

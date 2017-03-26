@@ -1,3 +1,5 @@
+
+
 body {
 
 	font-family: 'Source Sans Pro', sans-serif;
@@ -182,7 +184,54 @@ body {
 
 /* FIN TIPO PINTEREST */
 
+.track-nav{
+	padding-top:15px;
+	text-align:center;
+}
 
+input:active {
+border-top:none!important;
+border-left:none!important;
+border-right:none!important;
+border-bottom:1px solid #1380d1!important;
+background-color:#FFF!important;
+-webkit-box-shadow: none!important;
+box-shadow: none!important;
+}
+
+
+input:focus {
+border-top:none!important;
+border-left:none!important;
+border-right:none!important;
+border-bottom:1px solid #1380d1!important;
+background-color:#FFF!important;
+-webkit-box-shadow: none!important;
+box-shadow: none!important;
+}
+
+textarea:focus {
+border-top:none!important;
+border-left:none!important;
+border-right:none!important;
+border-bottom:1px solid #1380d1!important;
+background-color:#FFF!important;
+-webkit-box-shadow: none!important;
+box-shadow: none!important;
+}
+
+
+.mosaico-img2{
+	height:140px;
+	width:100%;
+}
+
+@media screen and (max-width:1079px){
+	.mosaico-img2{
+		height:auto!important;
+
+	}
+}
  @media screen and (max-width:691px){
 
 
@@ -193,14 +242,5 @@ body {
  }
 
 
-/*
- 	 .title-blog{
- 	 	margin: 65px 0 10px 15px!important;
- 	 }
-
-	.desc p, .desc {
-    margin: 0px 0 10px 15px;
-	}
-*/
 
  }

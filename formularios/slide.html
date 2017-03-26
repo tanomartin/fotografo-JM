@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="utf-8">
@@ -18,6 +17,8 @@
 <link href="fonts/SourceSans.woff2" rel="stylesheet"/>
 <link href="js/magnific-popup/magnific-popup.css" rel="stylesheet"/>
 <link href="fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" media="screen" />
+<link href="css/yamm.css" rel="stylesheet">
+<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"/>
 
 </head>
 
@@ -57,10 +58,10 @@
 			
 			<!-- Controls -->
 			<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev"> 
-				<span class="glyphicon glyphicon-chevron-left"></span>
+				<span class="glyphicon glyphicon-chevron-left" style="color:#777"></span>
 			</a> 
 			<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next"> 
-				<span class="glyphicon glyphicon-chevron-right"></span>
+				<span class="glyphicon glyphicon-chevron-right" style="color:#777"></span>
 			</a>
 		</div>
 		<!-- Carousel -->
@@ -84,6 +85,14 @@
 		$(document).ready(function() {
 			$(".fancybox").fancybox();
 		});
+	</script>
+	<script>
+    $(function() {
+        $(document).on('click', '.yamm .dropdown-menu', function(e) {
+            e.stopPropagation()
+        })
+    })
+    
 	</script>
 </body>
 
