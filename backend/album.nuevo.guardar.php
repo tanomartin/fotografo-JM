@@ -2,7 +2,7 @@
 
 try {
 	mysqli_autocommit($mysqli, FALSE);
-	$sqlInsertAlbum = "INSERT INTO albumes VALUES(DEFAULT, '".$_POST['titulo']."',0,0,".$_POST['tipo'].")";
+	$sqlInsertAlbum = "INSERT INTO albumes VALUES(DEFAULT, '".$_POST['titulo']."','".$_POST['subtitulo']."',0,0,".$_POST['tipo'].")";
 	mysqli_query($mysqli, $sqlInsertAlbum);
 	$idAlbum = $mysqli->insert_id;
 	

@@ -50,6 +50,10 @@
 				</div>
 				
 				<div class="form-group">
+					<label>Sub-Titulo</label><input type="text" name="subtitulo" id="subtitulo" tabindex="1" class="form-control input-lg" maxlength="100" placeholder="Sub-Titulo">
+				</div>
+				
+				<div class="form-group">
 					<label>Tipo</label>
 					<select class="form-control" id="tipo" name="tipo">
 					<?php $sqltipos = "select * from tipos";

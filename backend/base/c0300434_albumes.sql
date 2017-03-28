@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.8.1
+-- version 4.1.4
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-03-2017 a las 22:19:45
--- Versión del servidor: 5.6.11-log
--- Versión de PHP: 5.4.14
+-- Tiempo de generación: 28-03-2017 a las 19:32:52
+-- Versión del servidor: 5.6.15-log
+-- Versión de PHP: 5.4.24
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -29,6 +29,8 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `albumes` (
   `id` int(4) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(15) NOT NULL,
+  `subtitulo` varchar(100) NOT NULL,
+  `orden` int(3) NOT NULL,
   `activo` int(1) NOT NULL,
   `idPortada` int(5) NOT NULL,
   `tipo` int(1) NOT NULL,

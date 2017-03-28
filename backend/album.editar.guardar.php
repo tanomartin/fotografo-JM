@@ -3,7 +3,7 @@
 try {
 	$id = $_GET['id'];
 	mysqli_autocommit($mysqli, FALSE);
-	$sqlUpdateAlbum = "UPDATE albumes SET titulo = '".$_POST['titulo']."', tipo = ".$_POST['tipo'].", idPortada = ".$_POST['portada']." WHERE id = $id";
+	$sqlUpdateAlbum = "UPDATE albumes SET titulo = '".$_POST['titulo']."', subtitulo = '".$_POST['subtitulo']."', tipo = ".$_POST['tipo'].", idPortada = ".$_POST['portada']." WHERE id = $id";
 	mysqli_query($mysqli, $sqlUpdateAlbum);
 	$arrayUpdate = array();
 	foreach ($_POST as $key => $titulo) {

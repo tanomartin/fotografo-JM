@@ -60,6 +60,9 @@
 						<label>Titulo</label><input value="<?php echo $fila['titulo']?>" type="text" name="titulo" id="titulo" tabindex="1" class="form-control input-lg" required="required"  maxlength="15" placeholder="Titulo">
 					</div>
 					<div class="form-group">
+					<label>Sub-Titulo</label><input value="<?php echo $fila['subtitulo']?>" type="text" name="subtitulo" id="subtitulo" tabindex="1" class="form-control input-lg" maxlength="100" placeholder="Sub-Titulo">
+				</div>
+					<div class="form-group">
 						<label>Tipo</label>
 						<select class="form-control" id="tipo" name="tipo">
 							<?php $sqltipos = "select * from tipos";
