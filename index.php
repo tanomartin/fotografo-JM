@@ -37,22 +37,6 @@
 	if ($detect->isMobile() || $detect->isTablet()) {
 		header('Location: home.php');
 	} else {
-		$info=detect();
-		$videoPath = "fotos/default/";
-		$browser = $info["browser"]; 
-		if(strpos($browser, 'IE') !== FALSE ) {
-			$videoPath .= "video-home.wmv";
-		}
-		if(strpos($browser, 'SAFARI') !== FALSE) {
-			$videoPath .= "video-home.ogg";
-		}
-		if(strpos($browser, 'OPR') !== FALSE || strpos($browser, 'TRIDENT') !== FALSE || strpos($browser, 'FIREFOX') !== FALSE || strpos($browser, 'CHROME') !== FALSE || strpos($browser, 'FIREFOX') !== FALSE) {
-			$videoPath .= "video-home.mp4";
-		}
-		if ($videoPath == "fotos/default/") {
-			header('Location: home.php');	
-		} else {
-			$twig->display('index.html', array("videoPath" => $videoPath));
-		}
+		$twig->display('index.html');
 	}
 ?>
