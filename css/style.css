@@ -13,7 +13,7 @@ a {
 }
 
 .img-home img {
-	padding-top:50px;
+	padding-top:90px;
 	 margin: 0 auto;
 }
 
@@ -28,7 +28,7 @@ a {
 
 .tittle-album h2 {
 	font-size:20px;
-	margin:65px 0 40px 15px;
+	margin:65px 0px 0px 15px;
 	color:#777;
 	font-weight: 700;
 
@@ -69,7 +69,7 @@ a {
 }
 
 .desc p, .desc {
-    color: #868686;
+    color: black;
     font-size: 16px;
     line-height: 1.9;
     margin-bottom: 20px;
@@ -110,7 +110,8 @@ a {
 }
 
 .formacion-text{
-	margin-bottom:10px!important;
+	margin-bottom:2px!important;
+	color:black!important;
 }
 
 .foot p{
@@ -185,7 +186,7 @@ body {
 /* FIN TIPO PINTEREST */
 
 .track-nav{
-	padding-top:15px;
+	padding-top:5px;
 	text-align:center;
 }
 
@@ -222,10 +223,21 @@ box-shadow: none!important;
 
 
 .mosaico-img2{
-	height:140px;
+	height:160px;
 	width:100%;
 }
 
+.contact-f{
+	padding-top:50px;
+}
+
+.sub-album h3{
+
+	font-size:16px;
+	margin:25px 0 65px 15px;
+	color:#777;
+
+}
 @media screen and (max-width:1079px){
 	.mosaico-img2{
 		height:auto!important;
