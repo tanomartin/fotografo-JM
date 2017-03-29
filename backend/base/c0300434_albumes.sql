@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-03-2017 a las 19:32:52
+-- Tiempo de generación: 29-03-2017 a las 17:37:11
 -- Versión del servidor: 5.6.15-log
 -- Versión de PHP: 5.4.24
 
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `fotos` (
   `bajada` text NOT NULL,
   `path` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 -- --------------------------------------------------------
 
