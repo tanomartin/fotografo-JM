@@ -5,7 +5,7 @@ $rowActiveBlog = $resActiveBlog->fetch_assoc();
 $activBlog = $rowActiveBlog['cant'];
 
 $arrayAlbum = array();
-$sqlAlbumes = "select * from albumes a where activo = 1";
+$sqlAlbumes = "select * from albumes a where activo = 1 order by orden";
 $resAlbumes = $mysqli->query($sqlAlbumes);
 $rows = $resAlbumes->num_rows;
 if ($rows > 0) {

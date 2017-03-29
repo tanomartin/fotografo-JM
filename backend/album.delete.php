@@ -15,6 +15,7 @@ try {
 	mysqli_autocommit($mysqli, FALSE);
 	
 	$idAlbum = $_GET['id'];
+	$orden = $_GET['orden'];
 	
 	$sqlSelectSlider = "SELECT s.idFoto FROM fotos f, slider s WHERE f.idAlbum = $idAlbum and f.id = s.idFoto";
 	$resSelectSlider = $mysqli->query($sqlSelectSlider);
@@ -36,6 +37,14 @@ try {
 				$orden++;
 			}
 		}
+	}
+	
+	$sqlReordenamiento = "SELECT * FROM albumes WHERE orden > $orden order by orden";
+	$resReordenamiento = $mysqli->query($sqlReordenamiento);
+	while ($album = $resReordenamiento->fetch_assoc()) {
+		$nuevoOrden = $album['orden'] - 1;
+		$sqlUpdateOrden = "UPDATE albumes SET orden = $nuevoOrden where id = ".$album['id'];
+		mysqli_query($mysqli, $sqlUpdateOrden);
 	}
 	
 	$sqlDeleteAlbum = "DELETE FROM albumes WHERE id = $idAlbum";

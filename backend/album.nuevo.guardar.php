@@ -2,7 +2,13 @@
 
 try {
 	mysqli_autocommit($mysqli, FALSE);
-	$sqlInsertAlbum = "INSERT INTO albumes VALUES(DEFAULT, '".$_POST['titulo']."','".$_POST['subtitulo']."',0,0,".$_POST['tipo'].")";
+	
+	$sqlOrden = "SELECT count(*) as cantidad FROM albumes";
+	$resOrden = $mysqli->query($sqlOrden);
+	$rowOrden = $resOrden->fetch_assoc();
+	$orden = $rowOrden['cantidad'] + 1;
+	
+	$sqlInsertAlbum = "INSERT INTO albumes VALUES(DEFAULT, '".$_POST['titulo']."','".$_POST['subtitulo']."',$orden,0,0,".$_POST['tipo'].")";
 	mysqli_query($mysqli, $sqlInsertAlbum);
 	$idAlbum = $mysqli->insert_id;
 	

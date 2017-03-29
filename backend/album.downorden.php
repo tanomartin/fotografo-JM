@@ -7,17 +7,17 @@ try {
 	$orden = $_GET['orden'];
 	$ordenPosterior = $orden + 1;
 	
-	$sqlDownFirst = "UPDATE slider SET orden = -1 WHERE orden = $ordenPosterior";
+	$sqlDownFirst = "UPDATE albumes SET orden = -1 WHERE orden = $ordenPosterior";
 	mysqli_query($mysqli, $sqlDownFirst);
-	$sqlUpFoto = "UPDATE slider SET orden = $ordenPosterior WHERE orden = $orden";
-	mysqli_query($mysqli, $sqlUpFoto);
-	$sqlDownLast = "UPDATE slider SET orden = $orden WHERE orden = -1";
+	$sqlUp = "UPDATE albumes SET orden = $ordenPosterior WHERE orden = $orden";
+	mysqli_query($mysqli, $sqlUp);
+	$sqlDownLast = "UPDATE albumes SET orden = $orden WHERE orden = -1";
 	mysqli_query($mysqli, $sqlDownLast);
 
 	mysqli_commit($mysqli);
 	mysqli_close($mysqli);
 
-	header("Location: slider.php");
+	header("Location: album.php");
 } catch (Exception $e) { 
 	$mysqli->rollback();
 }

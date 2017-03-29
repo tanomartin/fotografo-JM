@@ -48,12 +48,13 @@
                 </div>
             </div>
 			<?php
-            	$sqlAlbumes = "select a.*, p.path, t.descripcion as tipo from albumes a, fotos p, tipos t where a.idPortada = p.id and a.tipo = t.id";
+            	$sqlAlbumes = "select a.*, p.path, t.descripcion as tipo from albumes a, fotos p, tipos t where a.idPortada = p.id and a.tipo = t.id order by a.orden";
 				$resultado = $mysqli->query($sqlAlbumes);
 				$rows = $resultado->num_rows;
 				if ($rows > 0) { ?>
 		            <table class="table">
 		            	<thead>
+		            		<th>Orden</th>
 		            		<th>Titulo</th>
 		            		<th>Portada</th>
 		            		<th>Estado</th>
@@ -63,6 +64,21 @@
 		            	<tbody>
 	             <?php while($fila = $resultado->fetch_assoc()) { ?>
 	                      <tr>
+	                      	  <td style="vertical-align: inherit; font-size: 20px">
+							  	<input name='orden' value="<?php echo $fila['orden']?>" type='text' size='1' style="display: none">
+							    <?php if ($rows > 1) {
+							    				$fechaUp = "<a href='album.uporden.php?orden=".$fila['orden']."'><span class='glyphicon glyphicon-arrow-up'></span></a>";
+							    				$fechaDown = "<a href='album.downorden.php?orden=".$fila['orden']."'><span class='glyphicon glyphicon-arrow-down'></span></a>";
+							    				$flechas = $fechaUp.$fechaDown;
+								    			if ($fila['orden'] == 1) {
+								    				$flechas = $fechaDown;
+								    			}
+								    			if ($fila['orden'] == $rows) {
+								    				$flechas = $fechaUp;
+								    			}
+								    			echo $flechas;
+							    		} ?>
+							  </td>
 	                          <td><?php echo $fila['titulo']?></td>
 	                          <td><img src="../<?php echo $fila['path']?>" class="img-responsive" alt="Cinque Terre" style="width: 100px"/></td>
 	                       	  <td><?php if ($fila['activo'] == 1) { ?>
@@ -74,7 +90,7 @@
 	                       	   <td><?php echo $fila['tipo']?></td>	
 	                       	  <td>
 	                       	  	<a href="album.editar.php?id=<?php echo $fila['id']?>" title="Editar"><span class="glyphicon glyphicon-pencil" style="font-size: larger"></span></a>
-	                       	  	<a href="#" data-toggle="modal" data-href="album.delete.php?id=<?php echo $fila['id']?>" data-target="#confirm-delete" title="Eliminar"><span class="glyphicon glyphicon-trash" style="font-size: larger"></span></a>
+	                       	  	<a href="#" data-toggle="modal" data-href="album.delete.php?id=<?php echo $fila['id']?>&orden=<?php echo $fila['orden']?>" data-target="#confirm-delete" title="Eliminar"><span class="glyphicon glyphicon-trash" style="font-size: larger"></span></a>
 	                       	  	<a href="../album.php?id=<?php echo $fila['id']?>" title="Vista Previa" target="_blank"><span class="glyphicon glyphicon-eye-open" style="font-size: larger"></span></a>
 	                       	  	<?php if ($fila['activo'] == 1) { ?>
 	                       	  			<a href="#" data-toggle="modal" data-href="album.cambioestado.php?id=<?php echo $fila['id']?>&estado=0" data-target="#confirm-desactivar" title="desactivar"><span class="glyphicon glyphicon-arrow-down" title="Desactivar" style="color: red; font-size: larger"></span></a>
