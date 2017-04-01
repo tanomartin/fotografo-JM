@@ -84,12 +84,15 @@ a {
 }
 	
  .blog-w{
- 	padding:0px 15px;
+ 	padding:0px 0px;
  	padding-bottom:30px;
  	margin:0 auto;
 
  }
 
+.blog-w p{
+	padding:0 0 0 35px;
+}
  .title-blog{
  	 margin: 15px 0 5px 0px!important;
  	 font-size:18px!important;
@@ -98,7 +101,7 @@ a {
  }
 
  .blog{
- 	padding-top:10px;
+ 	padding-top:0px;
  }
 
 .col-lg-6 form{
@@ -251,6 +254,10 @@ box-shadow: none!important;
     padding-bottom: 60px;
 
 }
+
+.fecha-blog{
+
+}
 @media screen and (max-width:1079px){
 	.mosaico-img2{
 		height:auto!important;
@@ -275,7 +282,7 @@ box-shadow: none!important;
 
 
  .blog-w{
- 	padding:0px 15px;
+ 	padding:0px 0px;
  	margin:0 auto;
  	padding-bottom:30px;
 
