@@ -28,8 +28,13 @@
   right: 0;
 }
 .yamm .yamm-content {
-  padding: 10px 20px;
+  padding-top:0px;
+  padding-right:0px;
+  padding-left:130px;
+  padding-bottom:10px;
   *zoom: 1;
+
+
 }
 .yamm .yamm-content:before,
 .yamm .yamm-content:after {

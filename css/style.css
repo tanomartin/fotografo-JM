@@ -29,7 +29,7 @@ a {
 .tittle-album h2 {
 	font-size:20px;
 	margin:65px 0px 0px 15px;
-	color:#777;
+	color:#000;
 	font-weight: 700;
 
 }
@@ -70,7 +70,7 @@ a {
 
 .desc p, .desc {
     color: black;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1.9;
     margin-bottom: 20px;
     text-align: left!important;
@@ -84,13 +84,15 @@ a {
 }
 	
  .blog-w{
- 	padding:0px 10%;
+ 	padding:0px 15px;
+ 	padding-bottom:30px;
  	margin:0 auto;
 
  }
 
  .title-blog{
  	 margin: 15px 0 5px 0px!important;
+ 	 font-size:18px!important;
 
 
  }
@@ -119,6 +121,7 @@ a {
 	margin-top:60px;
 	margin-bottom:100px;
 	display:inline-block;
+	color:#000;
 }
 
 .redes{
@@ -130,7 +133,7 @@ a {
 
 .foot a{
 	text-decoration:none;
-	color:#777;
+	color:#000;
 
 }
 
@@ -238,21 +241,51 @@ box-shadow: none!important;
 	color:#777;
 
 }
+
+.nv-margin{
+	margin-left: 20px;
+}
+
+.contact-section{
+	padding-top: 60px;
+    padding-bottom: 60px;
+
+}
 @media screen and (max-width:1079px){
 	.mosaico-img2{
 		height:auto!important;
 
 	}
+
+	.yamm .yamm-content {
+
+
+	  padding-left:0px!important;
+
+
+	}
+
+	.nv-margin{
+		margin-left: 0px!important;
+	}
+
+
 }
  @media screen and (max-width:691px){
 
 
  .blog-w{
- 	padding:0px 2%;
+ 	padding:0px 15px;
  	margin:0 auto;
+ 	padding-bottom:30px;
 
  }
 
+	.contact-section{
+		padding-top: 60px!important;
+	    padding-bottom: 60px!important;
+
+	}
 
 
  }
