@@ -89,13 +89,20 @@
 	<script src="js/creative.min.js"></script>
 	<script src="fancybox/source/jquery.fancybox.pack.js?v=2.1.5" type="text/javascript"></script>
 	<script src="js/analyticstracking.js" type="text/javascript"></script>
-
+	<script src="js/jquery.touchSwipe.min.js" type="text/javascript"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$(".fancybox").fancybox();
+			
+			$(".carousel").swipe({
+				  swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
+				    if (direction == 'left') $(this).carousel('next');
+				    if (direction == 'right') $(this).carousel('prev');
+				  },
+				  allowPageScroll:"vertical"
+			});
 		});
 	</script>
-
 </body>
 
 </html>
