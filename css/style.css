@@ -28,7 +28,7 @@ a {
 
 .tittle-album h2 {
 	font-size:20px;
-	margin:65px 0px 0px 15px;
+	margin:65px 0px 0px 35px!important;
 	color:#000;
 	font-weight: 700;
 
@@ -237,8 +237,8 @@ box-shadow: none!important;
 .sub-album h3{
 
 	font-size:16px;
-	margin:25px 0 65px 15px;
-	color:#777;
+	margin:15px 0 65px 35px!important;
+	color:#000;
 
 }
 
