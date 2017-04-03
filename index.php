@@ -37,6 +37,13 @@
 	if ($detect->isMobile() || $detect->isTablet()) {
 		header('Location: home.php');
 	} else {
-		$twig->display('index.html');
+		$info=detect();
+		$videoPath = "fotos/default/";
+		$browser = $info["browser"]; 
+		if (strpos($browser, 'SAFARI') !== FALSE) {
+			header('Location: home.php');	
+		} else {
+			$twig->display('index.html', array("videoPath" => $videoPath));
+		}
 	}
 ?>
