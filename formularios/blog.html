@@ -43,10 +43,10 @@
 				<div class="col-md-12 desc">
 					<div class="blog-w">
 						<h2 class="title-blog">{{blog.titulo}}</h2>
-						<p class="fecha-blog">{{blog.fecha}}</p>
+						<!--<p class="fecha-blog">{{blog.fecha}}</p>!-->
 						<p>{{blog.texto}}</p>
 						{% if blog.path != NULL %}
-						<div>
+						<div class="img-blog" style="text-align:center;">
 							<img class="img-responsive" src="{{blog.path}}">
 						</div>
 						{% endif %}

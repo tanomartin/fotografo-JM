@@ -17,6 +17,10 @@ a {
 	 margin: 0 auto;
 }
 
+.col-md-12 .img-blog img{
+	text-align:center!important;
+	display:inline-block!important;
+}
 .navbar-default {
 	margin-top:15px;
 
