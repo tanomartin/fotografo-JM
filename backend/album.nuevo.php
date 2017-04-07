@@ -46,7 +46,7 @@
             </div>
             <form id="album-form" action="album.nuevo.guardar.php" method="post" role="form" enctype="multipart/form-data">
             	<div class="form-group">
-					<label>Titulo</label><input type="text" name="titulo" id="titulo" tabindex="1" class="form-control input-lg" required="required"  maxlength="15" placeholder="Titulo">
+					<label>Titulo</label><input type="text" name="titulo" id="titulo" tabindex="1" class="form-control input-lg" required="required"  maxlength="20" placeholder="Titulo">
 				</div>
 				
 				<div class="form-group">
