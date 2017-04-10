@@ -3,7 +3,6 @@
 try {
 	mysqli_autocommit($mysqli, FALSE);
 	$idBlog = $_GET['id'];
-	var_dump($_FILES);
 	if ($_FILES['file']['tmp_name'] != "") {	
 		$sqlBlog = "select path from blog WHERE id = $idBlog";
 		$resBlog = $mysqli->query($sqlBlog);
